@@ -15,7 +15,7 @@ public class Interacter : MonoBehaviour
 
     [SerializeField] private UI_Interactable _uiInteractable;
 
-    public GameObject HeldItem = null;
+    public String HeldItem = "";
 
     private IInteractable _Interactable;
 
@@ -32,7 +32,10 @@ public class Interacter : MonoBehaviour
             {
                 if (!_uiInteractable.IsDisplayed) _uiInteractable.SetUp(); // does all the setup for ui display no action yet
 
-                if (Input.GetButtonDown("Jump")) _Interactable.Interact(this); // action when button is pressed
+                if (Input.GetButtonDown("Jump"))
+                {
+                    _Interactable.Interact(this);
+                }
             }
         } else
         {
