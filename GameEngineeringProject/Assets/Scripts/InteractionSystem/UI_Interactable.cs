@@ -19,8 +19,11 @@ public class UI_Interactable : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        gameObject.transform.rotation = Quaternion.LookRotation(Vector3.down);
-        gameObject.transform.position = Target.transform.position + Offset;
+        if (IsDisplayed)
+        {
+            gameObject.transform.rotation = Quaternion.LookRotation(Vector3.down);
+            gameObject.transform.position = Target.transform.position + Offset;
+        }
     }
 
     public void SetUp()
