@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2717773317536728821}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1011612871800905258
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.05, y: 1, z: 1.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5884062505668571453
 Rigidbody:
@@ -133,7 +133,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &4433175871309057839
 MonoBehaviour:
@@ -152,6 +152,7 @@ MonoBehaviour:
   verticalInputAxis: Vertical
   soundButton: Button2
   downButton: Button3
+  interactButton: Button1
   wavePrefab: {fileID: 8935890006618016965, guid: e6bd9dee80af276498e0dd69b0e780ff,
     type: 3}
   normalMaterial: {fileID: 2100000, guid: db5eff9175f525744b9efbfa39444ab9, type: 2}
@@ -169,3 +170,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPlayer: {fileID: 2185332300995387057}
+  interactButton: Button1

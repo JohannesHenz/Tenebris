@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isDown = false;  // Track whether the player is incapacitated
     public string horizontalInputAxis = "Horizontal";
     public string verticalInputAxis = "Vertical";
-    public string soundButton = "Button2P1";
-    public string downButton = "Button3";
-    public string interactButton = "Button1";
+    public string soundButton = "";
+    public string downButton = "";
+    public string interactButton = "";
     private Rigidbody rb;
     public GameObject wavePrefab;
     public Material normalMaterial;
