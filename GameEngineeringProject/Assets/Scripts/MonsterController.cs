@@ -5,8 +5,12 @@ using UnityEngine.AI;
 
 public class MonsterController : MonoBehaviour
 {
-    public Camera cam;
+    
     public NavMeshAgent agent;
+
+    //Teest variables
+    public GameObject noiseMaker;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +22,28 @@ public class MonsterController : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit)) 
-            {
-                agent.SetDestination(hit.point);
-            }
+            StartCoroutine("MakeSound");
         }
         
+    }
+
+    //Check if monster is able to hear the made sound
+    private void OnTriggerEnter(Collider other)
+    {
+        //If monster ever collide with triggerSound it will pursuite the noise source
+        if (other.gameObject.CompareTag("Sound"))
+        {
+            agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
+        }
+    }
+
+
+    //TestSound: Generate Sound Function - just implemented for testing purposes
+    public IEnumerator MakeSound()
+    {
+        //Player generates Noice
+        noiseMaker.SetActive(true);
+        yield return new WaitForSeconds(1);
+        noiseMaker.SetActive(false);
     }
 }
