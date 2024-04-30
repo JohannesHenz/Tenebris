@@ -37,6 +37,15 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Player dead");
+            collision.gameObject.GetComponent<PlayerMovement>().GetDown();
+        }
+    }
+
 
     //TestSound: Generate Sound Function - just implemented for testing purposes
     public IEnumerator MakeSound()
