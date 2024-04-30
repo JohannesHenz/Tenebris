@@ -31,7 +31,7 @@ public class MonsterController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //If monster ever collide with triggerSound it will pursuite the noise source
-        if (other.gameObject.CompareTag("Sound"))
+        if (other.gameObject.CompareTag("NoiseMaker"))
         {
             agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
         }
