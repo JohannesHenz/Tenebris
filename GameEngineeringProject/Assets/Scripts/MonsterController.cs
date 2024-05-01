@@ -11,7 +11,7 @@ public class MonsterController : MonoBehaviour
     public NavMeshAgent agent;
     private GameObject target;
     private float hearingRadius = 15.0f;
-    public State currentState;
+    [SerializeField] public State currentState;
 
 
     // Start is called before the first frame update
@@ -19,6 +19,13 @@ public class MonsterController : MonoBehaviour
     {
         currentState = State.Roaming;
         GetComponent<WaypointMover>().StartRoaming();
+
+        //To handle pyhsic engine and nav mesh
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true; 
+        }
     }
 
     // Update is called once per frame
@@ -40,7 +47,7 @@ public class MonsterController : MonoBehaviour
         // ************ Define states ****************
 
         // The monster will checkout the source of the made noice
-        if (currentState == State.Checkout && agent.remainingDistance < GetComponent<WaypointMover>().distanceThreshold)
+        if (currentState == State.Checkout && agent.remainingDistance <= GetComponent<WaypointMover>().distanceThreshold)
         {
             Debug.Log("Monster is returning to pathway");
             agent.ResetPath();
@@ -98,8 +105,10 @@ public class MonsterController : MonoBehaviour
         {
             Debug.Log("Player dead");
             collision.gameObject.GetComponent<PlayerMovement>().GetDown();
-            agent.ResetPath();
+            //Get Down disbales StepSound
             currentState = State.Roaming;
+            agent.isStopped = true;
+            agent.ResetPath();
         }
     }
 
