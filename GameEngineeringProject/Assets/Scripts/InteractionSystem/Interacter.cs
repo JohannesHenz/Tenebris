@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Interacter : MonoBehaviour
 {
     [SerializeField] private Transform _InteractionPoint;
-    [SerializeField] private float _InteractionPointRadius = 0.5f;
+    [SerializeField] private float _InteractionPointRadius = 1f;
     [SerializeField] private LayerMask _InteractableMask;
 
     public string interactButton = "";

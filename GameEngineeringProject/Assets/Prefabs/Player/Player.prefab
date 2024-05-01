@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 1485104827864291315}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.655}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _InteractionPoint: {fileID: 997494410766905951}
-  _InteractionPointRadius: 0.5
+  _InteractionPointRadius: 1
   _InteractableMask:
     serializedVersion: 2
     m_Bits: 512
@@ -659,7 +659,7 @@ Transform:
   m_GameObject: {fileID: 8618035454703482309}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 0.29}
+  m_LocalPosition: {x: 0, y: 0, z: 0.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
