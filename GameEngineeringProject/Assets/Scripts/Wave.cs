@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
-    public float expansionRate = 5f;
-    public float maxRadius = 10f;
+    public float expansionRate = 3f;
+    public float maxRadius = 15f;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class Wave : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
+    //transform.localScale.y
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle"))
