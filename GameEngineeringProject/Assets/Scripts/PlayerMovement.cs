@@ -79,6 +79,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public bool getIsDown()
+    {
+        return isDown;
+    }
+
 }
 
 
