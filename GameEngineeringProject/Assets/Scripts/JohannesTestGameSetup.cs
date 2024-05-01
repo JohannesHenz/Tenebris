@@ -13,13 +13,13 @@ public class GameSetup : MonoBehaviour
 
         player1.GetComponent<PlayerMovement>().horizontalInputAxis = "Horizontal";
         player1.GetComponent<PlayerMovement>().verticalInputAxis = "Vertical";
-        player1.GetComponent<PlayerMovement>().interactButton = "Button1P1";
+        player1.GetComponent<Interacter>().interactButton = "Button1P1";
         player1.GetComponent<PlayerMovement>().soundButton = "Button2P1";
         player1.GetComponent<PlayerMovement>().downButton = "TestingKillP1";  // Key to down Player 1
 
         player2.GetComponent<PlayerMovement>().horizontalInputAxis = "Horizontal2";
         player2.GetComponent<PlayerMovement>().verticalInputAxis = "Vertical2";
-        player2.GetComponent<PlayerMovement>().interactButton = "Button1P2";
+        player2.GetComponent<Interacter>().interactButton = "Button1P2";
         player2.GetComponent<PlayerMovement>().soundButton = "Button2P2";
         player2.GetComponent<PlayerMovement>().downButton = "TestingKillP2";  // Key to down Player 2
 

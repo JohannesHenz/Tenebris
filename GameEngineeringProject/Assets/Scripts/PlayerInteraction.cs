@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerInteraction : MonoBehaviour
 {
+
     public Transform otherPlayer;  // Reference to the other player
     private bool isReviving = false;
     private float reviveTimer = 0.0f;

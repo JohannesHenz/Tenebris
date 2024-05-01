@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class Interacter : MonoBehaviour
     [SerializeField] private Transform _InteractionPoint;
     [SerializeField] private float _InteractionPointRadius = 0.5f;
     [SerializeField] private LayerMask _InteractableMask;
+
+    public string interactButton = "";
+
 
     private readonly Collider[] _Colliders = new Collider[3];
     [SerializeField] private int _NumFound;
@@ -19,8 +23,12 @@ public class Interacter : MonoBehaviour
 
     private IInteractable _Interactable;
 
+    public bool Deactivated = false;
+
+
     private void Update()
     {
+        if (!Deactivated) { 
         // find everything in radius that is part of mask
         _NumFound = Physics.OverlapSphereNonAlloc(_InteractionPoint.position, _InteractionPointRadius, _Colliders, _InteractableMask);
 
@@ -32,7 +40,7 @@ public class Interacter : MonoBehaviour
             {
                 if (!_uiInteractable.IsDisplayed) _uiInteractable.SetUp(); // does all the setup for ui display no action yet
 
-                if (Input.GetButtonDown("Jump"))
+                if (Input.GetButtonDown(interactButton))
                 {
                     _Interactable.Interact(this);
                 }
@@ -42,6 +50,8 @@ public class Interacter : MonoBehaviour
             if (_Interactable != null) _Interactable = null;
             if (_uiInteractable.IsDisplayed) _uiInteractable.Close();
         }
+
+        }
     }
 
     private void OnDrawGizmos()
@@ -49,4 +59,5 @@ public class Interacter : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_InteractionPoint.position, _InteractionPointRadius);
     }
+
 }
