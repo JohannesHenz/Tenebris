@@ -5,11 +5,18 @@ using UnityEngine;
 public class GameSetup : MonoBehaviour
 {
     public GameObject playerPrefab;
+    public GameObject spawnerObject;
 
     void Start()
     {
-        GameObject player1 = Instantiate(playerPrefab, new Vector3(-1, 1, 0), Quaternion.identity);
-        GameObject player2 = Instantiate(playerPrefab, new Vector3(1, 1, 0), Quaternion.identity);
+        Vector3 basePosition = spawnerObject.transform.position;
+        Vector3 player1Position = basePosition + new Vector3(-1, -0.5f, 0);  // Offset for player 1
+        Vector3 player2Position = basePosition + new Vector3(1, -0.5f, 0);  // Offset for player 2
+
+        // Instantiate players at their respective positions
+        GameObject player1 = Instantiate(playerPrefab, player1Position, Quaternion.identity);
+        GameObject player2 = Instantiate(playerPrefab, player2Position, Quaternion.identity);
+
 
         player1.GetComponent<PlayerMovement>().horizontalInputAxis = "Horizontal";
         player1.GetComponent<PlayerMovement>().verticalInputAxis = "Vertical";

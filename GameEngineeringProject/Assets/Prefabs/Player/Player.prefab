@@ -113,6 +113,8 @@ GameObject:
   - component: {fileID: -2299261887808369339}
   - component: {fileID: 7260420410540931849}
   - component: {fileID: -3971500323664028036}
+  - component: {fileID: -6106358625305190178}
+  - component: {fileID: -7800743322887505965}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -213,6 +215,8 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: db5eff9175f525744b9efbfa39444ab9, type: 2}
   downedMaterial: {fileID: 2100000, guid: 876b33a7410a36246ace95e97fc10ac5, type: 2}
   reviveCollider: {fileID: 269210043631143265}
+  soundManager: {fileID: 0}
+  reviveCount: 0
 --- !u!114 &-2299261887808369339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +276,51 @@ CapsuleCollider:
   m_Height: 2.0087423
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: -0.010481328, z: -0.00000011920929}
+--- !u!114 &-6106358625305190178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717773317536728821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de5a44b23590fa4a82dbb9f8ac33ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepSoundPrefab: {fileID: 8717504885980491466, guid: 385ac71cab1a1964f8706bd3d82d71c6,
+    type: 3}
+  noiseMakerSoundPrefab: {fileID: 7777042852545096521, guid: 3f42ec79a35be6342a4ed5ba38f4bedc,
+    type: 3}
+  taskSoundPrefab: {fileID: 4220268661115184806, guid: 49b8518a579e7234fb22a2fa3772c1d3,
+    type: 3}
+--- !u!54 &-7800743322887505965
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717773317536728821}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &6568296194824274919
 GameObject:
   m_ObjectHideFlags: 0
