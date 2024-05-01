@@ -40,7 +40,7 @@ public class MonsterController : MonoBehaviour
         // ************ Define states ****************
 
         // The monster will checkout the source of the made noice
-        if (currentState == State.Checkout && agent.remainingDistance < GetComponent<WaypointMover>().distanceThreshold)
+        if (currentState == State.Checkout && agent.remainingDistance <= GetComponent<WaypointMover>().distanceThreshold)
         {
             Debug.Log("Monster is returning to pathway");
             agent.ResetPath();
@@ -82,7 +82,7 @@ public class MonsterController : MonoBehaviour
             agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
             currentState = State.Checkout;
         }
-        else if (other.gameObject.CompareTag("StepSound") && currentState != State.Checkout)
+        else if (other.gameObject.CompareTag("StepSound") && currentState != State.Checkout )
         {
             //Third Priority are steps - due to the fact that the monster is blind and steps aren't very loud
             currentState = State.Chasing;
@@ -98,7 +98,8 @@ public class MonsterController : MonoBehaviour
         {
             Debug.Log("Player dead");
             collision.gameObject.GetComponent<PlayerMovement>().GetDown();
-            agent.ResetPath();
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
             currentState = State.Roaming;
         }
     }
