@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private float playerSpeed = 4.0f;
     public GameObject reviveCollider;
+    public int reviveCount = 0;
 
 
     void Start()
@@ -63,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void GetDown()
     {
+        reviveCount = 10;
         gameObject.GetComponent<Interacter>().Deactivated = true;
         reviveCollider.SetActive(true);
         isDown = true;
@@ -72,11 +74,17 @@ public class PlayerMovement : MonoBehaviour
     // Method to revive the player
     public void Revive()
     {
-        gameObject.GetComponent<Interacter>().Deactivated = false;
-        isDown = false;
-        renderer.material = normalMaterial;  // Revert the material to the normal state
-        reviveCollider.SetActive(false);
-
+        if (reviveCount > 0)
+        {
+            reviveCount--;
+        }
+        else
+        {
+            gameObject.GetComponent<Interacter>().Deactivated = false;
+            isDown = false;
+            renderer.material = normalMaterial;  // Revert the material to the normal state
+            reviveCollider.SetActive(false);
+        }
     }
 
     public bool getIsDown()
