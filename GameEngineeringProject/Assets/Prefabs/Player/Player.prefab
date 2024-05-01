@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1485104827864291315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997494410766905951}
+  m_Layer: 9
+  m_Name: InteractionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &997494410766905951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485104827864291315}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2185332300995387057}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2717773317536728821
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,10 +42,11 @@ GameObject:
   - component: {fileID: 2185332300995387057}
   - component: {fileID: 2553019234183264129}
   - component: {fileID: 1011612871800905258}
-  - component: {fileID: 4895418275600807100}
   - component: {fileID: 5884062505668571453}
   - component: {fileID: 4433175871309057839}
   - component: {fileID: -2299261887808369339}
+  - component: {fileID: 7260420410540931849}
+  - component: {fileID: -3971500323664028036}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -34,7 +66,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 997494410766905951}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2553019234183264129
@@ -87,27 +120,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4895418275600807100
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2717773317536728821}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.05, y: 1, z: 1.05}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5884062505668571453
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,3 +183,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherPlayer: {fileID: 2185332300995387057}
   interactButton: Button1
+--- !u!114 &7260420410540931849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717773317536728821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c59ae5820eadf14da9368123bff23d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _InteractionPoint: {fileID: 997494410766905951}
+  _InteractionPointRadius: 0.5
+  _InteractableMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _NumFound: 0
+  _uiInteractable: {fileID: 0}
+  HeldItem: 
+--- !u!136 &-3971500323664028036
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717773317536728821}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2.0087423
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: -0.010481328, z: -0.00000011920929}

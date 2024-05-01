@@ -7,7 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     private bool isReviving = false;
     private float reviveTimer = 0.0f;
     private const float requiredReviveTime = 3.0f;  // Time required to hold the button
-    public string interactButton = "Button1";
+    public string interactButton = "";
 
 
     void Update()

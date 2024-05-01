@@ -8,8 +8,8 @@ public class GameSetup : MonoBehaviour
 
     void Start()
     {
-        GameObject player1 = Instantiate(playerPrefab, new Vector3(-1, 0, 0), Quaternion.identity);
-        GameObject player2 = Instantiate(playerPrefab, new Vector3(1, 0, 0), Quaternion.identity);
+        GameObject player1 = Instantiate(playerPrefab, new Vector3(-1, 1, 0), Quaternion.identity);
+        GameObject player2 = Instantiate(playerPrefab, new Vector3(1, 1, 0), Quaternion.identity);
 
         player1.GetComponent<PlayerMovement>().horizontalInputAxis = "Horizontal";
         player1.GetComponent<PlayerMovement>().verticalInputAxis = "Vertical";
