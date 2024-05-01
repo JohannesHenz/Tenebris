@@ -11,7 +11,7 @@ public class MonsterController : MonoBehaviour
     public NavMeshAgent agent;
     private GameObject target;
     private float hearingRadius = 15.0f;
-    public State currentState;
+    [SerializeField] public State currentState;
 
 
     // Start is called before the first frame update
@@ -19,6 +19,13 @@ public class MonsterController : MonoBehaviour
     {
         currentState = State.Roaming;
         GetComponent<WaypointMover>().StartRoaming();
+
+        //To handle pyhsic engine and nav mesh
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true; 
+        }
     }
 
     // Update is called once per frame
@@ -82,7 +89,7 @@ public class MonsterController : MonoBehaviour
             agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
             currentState = State.Checkout;
         }
-        else if (other.gameObject.CompareTag("StepSound") && currentState != State.Checkout )
+        else if (other.gameObject.CompareTag("StepSound") && currentState != State.Checkout)
         {
             //Third Priority are steps - due to the fact that the monster is blind and steps aren't very loud
             currentState = State.Chasing;
@@ -98,9 +105,10 @@ public class MonsterController : MonoBehaviour
         {
             Debug.Log("Player dead");
             collision.gameObject.GetComponent<PlayerMovement>().GetDown();
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
+            //Get Down disbales StepSound
             currentState = State.Roaming;
+            agent.isStopped = true;
+            agent.ResetPath();
         }
     }
 
