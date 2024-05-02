@@ -52,23 +52,12 @@ public class PlayerMovement : MonoBehaviour
                 HandleStepSound();
             }
 
-            /*
-        Vector3 move = new Vector3(Input.GetAxis(horizontalInputAxis), 0, Input.GetAxis(verticalInputAxis));
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-            soundManager.EmitStepSound(stepRadius);  // Assuming small radius and short duration for step sound
         }
-            */
-
-        }
-              // Skip movement updates if the player is down
+             
         if (Input.GetButtonDown(soundButton))
         {
-            soundManager.EmitNoiseMakerSound(noiseMakerRadius);  // Larger radius and longer duration
-            //EmitWave();
+            soundManager.EmitNoiseMakerSound(noiseMakerRadius);  
+           
         }
        
         
@@ -76,11 +65,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleStepSound()
     {
-        stepSoundTimer += Time.deltaTime;
-        if (stepSoundTimer >= stepSoundInterval)
+        if (!isDown) // Check again to prevent any sounds from being emitted if down
         {
-            soundManager.EmitStepSound(stepRadius);
-            stepSoundTimer = 0f; // Reset timer
+            stepSoundTimer += Time.deltaTime;
+            if (stepSoundTimer >= stepSoundInterval)
+            {
+                soundManager.EmitStepSound(stepRadius);
+                stepSoundTimer = 0f; // Reset timer
+            }
         }
     }
 
