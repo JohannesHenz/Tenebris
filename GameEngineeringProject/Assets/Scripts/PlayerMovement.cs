@@ -22,10 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private float playerSpeed = 6.0f;
     private Renderer renderer;
-    private CharacterController controller;
     private float noiseMakerRadius = 10.0f;
     private float stepRadius = 3.0f;
-    private float taskRadius = 200.0f;
     private Vector3 movementInput;
     private float stepSoundTimer = 0f;
     private float stepSoundInterval = 0.2f;
