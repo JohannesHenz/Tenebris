@@ -33,7 +33,12 @@ public class ItemConditionedInteractable : MonoBehaviour, IInteractable
             Debug.Log("Successfully interacted with: " + gameObject.name + ", which does not require an item");
             action.CallAction();
             return true;
-        } 
+        }
+        else if (ItemConditionName == "RemoteActivated")
+        {
+            Debug.Log("Failed to interact with: " + gameObject.name + ", this item needs to be activated remotely");
+            return false;
+        }
         else if (interacter.HeldItem == "")
         {
             Debug.Log("Failed to interact with: " + gameObject.name + ", you dont have the right item");
