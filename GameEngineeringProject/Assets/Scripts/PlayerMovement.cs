@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public int reviveCount = 0;
 
     private Rigidbody rb;
-    private float playerSpeed = 4.0f;
+    private float playerSpeed = 6.0f;
     private Renderer renderer;
     private CharacterController controller;
     private float noiseMakerRadius = 10.0f;
