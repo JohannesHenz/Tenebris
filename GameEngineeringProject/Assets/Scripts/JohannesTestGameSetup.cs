@@ -5,11 +5,11 @@ using UnityEngine;
 public class GameSetup : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public GameObject spawnerObject;
+    
 
     void Start()
     {
-        Vector3 basePosition = spawnerObject.transform.position;
+        Vector3 basePosition = gameObject.transform.position;
         Vector3 player1Position = basePosition + new Vector3(-1, -0.5f, 0);  // Offset for player 1
         Vector3 player2Position = basePosition + new Vector3(1, -0.5f, 0);  // Offset for player 2
 
