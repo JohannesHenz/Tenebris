@@ -9,6 +9,8 @@ public class MonsterController : MonoBehaviour
 {
     // Variables 
     public NavMeshAgent agent;
+    private float roamingSpeed = 4.5f;
+    private float chasingCheckoutSpeed = 5.5f;
     private GameObject target;
     private float hearingRadius = 15.0f;
     [SerializeField] public State currentState;
@@ -38,15 +40,13 @@ public class MonsterController : MonoBehaviour
         if (currentState == State.Checkout && agent.remainingDistance <= GetComponent<WaypointMover>().distanceThreshold)
         {
             Debug.Log("Monster is returning to pathway");
-            agent.ResetPath();
-            currentState = State.Roaming;
+            ReturnRoaming();
         }
         // Monster is retreates to lates waypoint if player is to far away
         else if (currentState == State.Chasing && agent.remainingDistance > hearingRadius)
         {
             Debug.Log("Monster is bored");
-            agent.ResetPath();
-            currentState = State.Roaming;
+            ReturnRoaming();
         }
         // If player is in hearing range - chase the player
         else if (currentState == State.Chasing)
@@ -70,17 +70,20 @@ public class MonsterController : MonoBehaviour
             // First priority is the Noice Maker to leave player option to distract monster
             agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
             currentState = State.Checkout;
+            agent.speed = chasingCheckoutSpeed;
         }
         else if (other.gameObject.CompareTag("TaskSound") && currentState != State.Checkout)
         {
             //Second Priority are Tasks - monster wants to check them out and destroy them
             agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
             currentState = State.Checkout;
+            agent.speed = chasingCheckoutSpeed;
         }
         else if (other.gameObject.CompareTag("StepSound") && currentState != State.Checkout)
         {
             //Third Priority are steps - due to the fact that the monster is blind and steps aren't very loud
             currentState = State.Chasing;
+            agent.speed = chasingCheckoutSpeed;
             target = other.gameObject;
         }
     }
@@ -104,8 +107,14 @@ public class MonsterController : MonoBehaviour
     private IEnumerator PostponeSetRoaming()
     {
         yield return new WaitForSeconds(0.5f);
-        currentState = State.Roaming;
-        agent.ResetPath();
+        ReturnRoaming();
 
+    }
+
+    private void ReturnRoaming()
+    {
+        agent.ResetPath();
+        currentState = State.Roaming;
+        agent.speed = roamingSpeed;
     }
 }

@@ -12,12 +12,12 @@ public class Waypoints : MonoBehaviour
         // Create the wired sphere on every child position
         foreach(Transform t in transform)
         {
-            Gizmos.color = Color.yellow;
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(t.position, waypointSize);
         }
 
         // Draw a line between every child in ascending order
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.yellow;
         for(int i = 0; i < transform.childCount - 1; i++)
         {
             Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild(i+1).position);
