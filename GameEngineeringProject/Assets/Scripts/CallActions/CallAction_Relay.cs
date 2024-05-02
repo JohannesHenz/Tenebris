@@ -7,7 +7,6 @@ using static UnityEngine.GraphicsBuffer;
 public class CallAction_Relay : MonoBehaviour, ICallAction
 {
     public GameObject[] Senders; // list of sender
-
     public GameObject[] Targets; // list of targets
 
     public float Timer = 0.0f; // time in seconds - 0.0 is indefinite
@@ -34,15 +33,22 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
     {
         if (Concurrent)
         {
-            // not implemented yet
+            foreach (var target in Targets)
+            {
+                target.GetComponent<ICallAction>().CallAction();
+            }
         }
-
-        foreach (var target in Targets)
+        else
         {
-            target.GetComponent<ICallAction>().CallAction();
+            foreach (var target in Targets)
+            {
+                target.GetComponent<ICallAction>().CallAction();
+            }
         }
-
+        
         Debug.Log("CallAction_Relay called");
         return true;
     }
+
+
 }
