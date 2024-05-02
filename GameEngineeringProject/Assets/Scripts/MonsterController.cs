@@ -51,7 +51,11 @@ public class MonsterController : MonoBehaviour
         // If player is in hearing range - chase the player
         else if (currentState == State.Chasing)
         {
-            agent.SetDestination(target.GetComponent<Transform>().position);
+            if(target != null)
+            {
+                agent.SetDestination(target.GetComponent<Transform>().position);
+            }
+            
         }
 
         // *******************************************
