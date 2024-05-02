@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public string horizontalInputAxis = "Horizontal";
     public string verticalInputAxis = "Vertical";
     public string soundButton = "";
-    public string downButton = "";
     public string interactButton = "";
     public GameObject wavePrefab;
     public Material normalMaterial;
@@ -30,18 +29,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-       /////////////////////// controller = gameObject.AddComponent<CharacterController>();
+        // Get the necessary Components
         soundManager = GetComponent<SoundManager>();
-
         rb = GetComponent<Rigidbody>();
-        renderer = GetComponent<Renderer>();  // Make sure your player GameObject has a Renderer component
+        renderer = GetComponent<Renderer>();  
 
        
     }
 
     void Update()
     {
-        if (!isDown)
+        if (!isDown) //Don't Move or Make StepSound if player is down
         {
             movementInput = new Vector3(Input.GetAxis(horizontalInputAxis), 0, Input.GetAxis(verticalInputAxis)).normalized;
             if (movementInput != Vector3.zero)
@@ -52,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
              
-        if (Input.GetButtonDown(soundButton))
+        if (Input.GetButtonDown(soundButton)) //NoisMakerSound 
         {
             soundManager.EmitNoiseMakerSound(noiseMakerRadius);  
            
@@ -65,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDown) // Check again to prevent any sounds from being emitted if down
         {
-            stepSoundTimer += Time.deltaTime;
+            stepSoundTimer += Time.deltaTime; //Only allow a certain number of StepSounds per second
             if (stepSoundTimer >= stepSoundInterval)
             {
                 soundManager.EmitStepSound(stepRadius);

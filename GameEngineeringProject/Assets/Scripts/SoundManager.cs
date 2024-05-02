@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
 
     private GameObject EmitSound(GameObject soundPrefab, float radius)
     {
+        //Instantiate the right SoundPrefab based on which Emit_Sound method is called
         GameObject sound = Instantiate(soundPrefab, transform.position, Quaternion.identity);
         return sound;
     }
