@@ -31,18 +31,6 @@ public class MonsterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*/------- PLayer Test ----------
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine("NoiseMaker");
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            StartCoroutine("TaskSound");
-        }
-
-        //---------------------------*/
-
 
         // ************ Define states ****************
 
@@ -105,31 +93,19 @@ public class MonsterController : MonoBehaviour
         {
             Debug.Log("Player dead");
             collision.gameObject.GetComponent<PlayerMovement>().GetDown();
-            //Get Down disbales StepSound
-            currentState = State.Roaming;
-            agent.isStopped = true;
-            agent.ResetPath();
+            
+            StartCoroutine("PostponeSetRoaming");
+
         }
     }
 
 
-
-
-
-    //----------------------------Player Test ---------------------
-    /*public GameObject noiseMaker;
-    public GameObject taskSound;
-    IEnumerator NoiseMaker()
+    // Postpone setting state to roaming to handle stepSound disappearing
+    private IEnumerator PostponeSetRoaming()
     {
-        noiseMaker.SetActive(true);
-        yield return new WaitForSeconds(1);
-        noiseMaker.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        currentState = State.Roaming;
+        agent.ResetPath();
+
     }
-
-    IEnumerator TaskSound()
-    {
-        taskSound.SetActive(true);
-        yield return new WaitForSeconds(1);
-        taskSound.SetActive(false);
-    }*/
 }

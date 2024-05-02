@@ -16,6 +16,7 @@ public class WaypointMover : MonoBehaviour
     private void Update()
     {
 
+
         // If object is close enough to destination than choose the next one
         if (agent.remainingDistance <= distanceThreshold && GetComponent<MonsterController>().currentState == State.Roaming)
         {
