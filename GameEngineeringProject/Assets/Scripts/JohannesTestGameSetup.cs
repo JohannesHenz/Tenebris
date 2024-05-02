@@ -10,8 +10,8 @@ public class GameSetup : MonoBehaviour
     void Start()
     {
         Vector3 basePosition = gameObject.transform.position;
-        Vector3 player1Position = basePosition + new Vector3(-1, -0.5f, 0);  // Offset for player 1
-        Vector3 player2Position = basePosition + new Vector3(1, -0.5f, 0);  // Offset for player 2
+        Vector3 player1Position = basePosition + new Vector3(-1, 1.25f, 0);  // Offset for player 1
+        Vector3 player2Position = basePosition + new Vector3(1, 1.25f, 0);  // Offset for player 2
 
         // Instantiate players at their respective positions
         GameObject player1 = Instantiate(playerPrefab, player1Position, Quaternion.identity);
