@@ -26,6 +26,16 @@ public class Interacter : MonoBehaviour
     public bool Deactivated = false;
 
 
+    /// Added by Johannes for the TaskSound
+    private SoundManager soundManager;  // Reference to the SoundManager
+    private float taskSoundRadius = 60.0f;
+    /// 
+
+    void Start()
+    {
+        soundManager = GetComponentInParent<SoundManager>();  // Ensure the sound manager is attached to the parent
+    }
+
     private void Update()
     {
         if (!Deactivated) { 
@@ -43,6 +53,9 @@ public class Interacter : MonoBehaviour
                 if (Input.GetButtonDown(interactButton))
                 {
                     _Interactable.Interact(this);
+                         /// Added by Johannes for the TaskSound
+                         soundManager.EmitTaskSound(taskSoundRadius);
+                         /// 
                 }
             }
         } else

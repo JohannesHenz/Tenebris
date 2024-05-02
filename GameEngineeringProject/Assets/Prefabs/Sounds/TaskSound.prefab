@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1926867982197069599}
   - component: {fileID: 4924965393233436378}
   - component: {fileID: 329266039867740876}
-  - component: {fileID: -7198946195404008839}
+  - component: {fileID: -2459460386906056023}
   m_Layer: 0
   m_Name: TaskSound
   m_TagString: TaskSound
@@ -106,7 +106,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4220268661115184806}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &-7198946195404008839
+--- !u!114 &-2459460386906056023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27877db54ae6e4c4293248b50ef83eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expansionRate: 1
-  maxRadius: 0.1
+  expansionRate: 15
+  maxRadius: 0
