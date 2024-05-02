@@ -10,7 +10,7 @@ public class MonsterController : MonoBehaviour
     // Variables 
     public NavMeshAgent agent;
     private float roamingSpeed = 4.5f;
-    private float chasingCheckoutSpeed = 5.5f;
+    private float chasingCheckoutSpeed = 6.0f;
     private GameObject target;
     private float hearingRadius = 15.0f;
     [SerializeField] public State currentState;
