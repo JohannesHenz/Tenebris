@@ -10,7 +10,8 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
 
     public GameObject[] Targets; // list of targets
 
-    public float Time = 0.0f; // time in seconds - 0.0 is indefinite
+    public float Timer = 0.0f; // time in seconds - 0.0 is indefinite
+    public bool Concurrent = false; // switch to true if all senders have to be active at the same time
 
     private void Start()
     {
@@ -31,6 +32,11 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
     }
     public bool CallAction()
     {
+        if (Concurrent)
+        {
+            // not implemented yet
+        }
+
         foreach (var target in Targets)
         {
             target.GetComponent<ICallAction>().CallAction();
