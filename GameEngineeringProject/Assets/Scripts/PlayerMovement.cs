@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private float stepRadius = 3.0f;
     private float taskRadius = 200.0f;
     private Vector3 movementInput;
-
+    private float stepSoundTimer = 0f;
+    private float stepSoundInterval = 0.2f;
 
     void Start()
     {
@@ -48,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             if (movementInput != Vector3.zero)
             {
                 MovePlayer();
-                soundManager.EmitStepSound(stepRadius);
+                HandleStepSound();
             }
 
             /*
@@ -72,6 +73,17 @@ public class PlayerMovement : MonoBehaviour
        
         
     }
+
+    private void HandleStepSound()
+    {
+        stepSoundTimer += Time.deltaTime;
+        if (stepSoundTimer >= stepSoundInterval)
+        {
+            soundManager.EmitStepSound(stepRadius);
+            stepSoundTimer = 0f; // Reset timer
+        }
+    }
+
 
     private void MovePlayer()
     {
