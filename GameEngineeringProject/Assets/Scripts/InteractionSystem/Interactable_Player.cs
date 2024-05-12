@@ -7,7 +7,8 @@ public class Interactable_Player : MonoBehaviour, IInteractable
     [SerializeField] private string _Prompt;
 
     public string InteractionPrompt => _Prompt; // getter for field returns prompt
-    public Sprite DisplayedInteractIcon { get; set; }
+    [SerializeField] private Sprite _InteractIcon;
+    public Sprite DisplayedInteractIcon => _InteractIcon;
 
 
     public bool Interact(Interacter interacter)
