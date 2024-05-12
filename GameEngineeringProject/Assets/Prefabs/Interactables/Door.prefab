@@ -119,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bf653a73025ed47b6e84186c00a645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemCondition: {fileID: 3493445346445012544, guid: 5bd0691c3cd19d442bbb2cb84091c7d3,
-    type: 3}
-  ItemConditionName: 
+  ItemConditions: []
+  ItemConditionNames: []
   _Prompt: 
+  _InteractIcon: {fileID: 21300000, guid: ef46c26b4026a6e459fc8613a20f35eb, type: 3}
 --- !u!114 &4664116317537207521
 MonoBehaviour:
   m_ObjectHideFlags: 0

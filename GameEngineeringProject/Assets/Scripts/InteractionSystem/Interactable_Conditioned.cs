@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ItemConditionedInteractable : MonoBehaviour, IInteractable
+public class InteractableConditioned : MonoBehaviour, IInteractable
 {
     // item that the player has to hold in order to successfully interact with the interactable
     public List<GameObject> ItemConditions;
     public List<string> ItemConditionNames;
 
     private ICallAction action;
-
+    
     [SerializeField] private string _Prompt;
     public string InteractionPrompt => _Prompt; // getter for field returns prompt
+    [SerializeField] private Sprite _InteractIcon;
+    public Sprite DisplayedInteractIcon => _InteractIcon;
 
     void Start()
     {

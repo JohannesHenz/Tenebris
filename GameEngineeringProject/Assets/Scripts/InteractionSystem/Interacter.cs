@@ -48,7 +48,7 @@ public class Interacter : MonoBehaviour
 
             if (_Interactable != null)
             {
-                if (!_uiInteractable.IsDisplayed) _uiInteractable.SetUp(); // does all the setup for ui display no action yet
+                if (!_uiInteractable.IsDisplayed) _uiInteractable.SetUp(_Interactable.DisplayedInteractIcon); // does all the setup for ui display no action yet
 
                 if (Input.GetButtonDown(interactButton))
                 {

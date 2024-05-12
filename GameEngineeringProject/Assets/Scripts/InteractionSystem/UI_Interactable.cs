@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class UI_Interactable : MonoBehaviour
 {
@@ -26,9 +27,10 @@ public class UI_Interactable : MonoBehaviour
         }
     }
 
-    public void SetUp()
+    public void SetUp(Sprite currentSprite)
     {
         // TODO: prompt text can be added later https://www.youtube.com/watch?v=THmW4YolDok&ab_channel=DanPos
+        UiElement.GetComponent<Image>().sprite = currentSprite;
         UiElement.SetActive(true);
         IsDisplayed = true;
     }

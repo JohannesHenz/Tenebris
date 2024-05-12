@@ -6,5 +6,6 @@ using UnityEngine;
 public interface IInteractable
 {
     public string InteractionPrompt { get; }
+    public Sprite DisplayedInteractIcon { get; }
     public bool Interact(Interacter interacter);
 }
