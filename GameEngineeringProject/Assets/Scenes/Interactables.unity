@@ -619,7 +619,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2717773317536728821, guid: 4693d13031abbe24e8ba8a6033e6945d,
     type: 3}
-  spawnerObject: {fileID: 789032397}
 --- !u!4 &789032399
 Transform:
   m_ObjectHideFlags: 0
@@ -1365,12 +1364,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312198898}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1350089112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3508712036488979669, guid: 7d03d53cc83872c42b6720325f44b3af,
-    type: 3}
-  m_PrefabInstance: {fileID: 1588831060}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1350089113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1486570811955174648, guid: 7d03d53cc83872c42b6720325f44b3af,
@@ -1496,6 +1489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Prompt: 
+  _InteractIcon: {fileID: 0}
 --- !u!1 &1529816969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,9 +1714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bf653a73025ed47b6e84186c00a645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemCondition: {fileID: 1350089112}
-  ItemConditionName: 
+  ItemConditions: []
+  ItemConditionNames: []
   _Prompt: Open Door
+  _InteractIcon: {fileID: 0}
 --- !u!114 &1585079373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,10 +2211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bf653a73025ed47b6e84186c00a645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemCondition: {fileID: 4181373351937444917, guid: b2ec54eda987e6340a567a6e64def9fd,
-    type: 3}
-  ItemConditionName: 
+  ItemConditions: []
+  ItemConditionNames: []
   _Prompt: 
+  _InteractIcon: {fileID: 0}
 --- !u!65 &1853362243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2463,10 +2458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bf653a73025ed47b6e84186c00a645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemCondition: {fileID: 3493445346445012544, guid: 5bd0691c3cd19d442bbb2cb84091c7d3,
-    type: 3}
-  ItemConditionName: 
+  ItemConditions: []
+  ItemConditionNames: []
   _Prompt: 
+  _InteractIcon: {fileID: 21300000, guid: c4e8ec1fd6e236b45b2b7c92c01e40f0, type: 3}
 --- !u!65 &2077713402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2757,6 +2752,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1721191218420905426, guid: b0423cd58ac940744b87a74e43271a24,
+        type: 3}
+      propertyPath: _InteractIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 21a73b471f561eb4c8d50fac6c042e6c,
+        type: 3}
+    - target: {fileID: 1721191218420905426, guid: b0423cd58ac940744b87a74e43271a24,
+        type: 3}
+      propertyPath: ItemConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721191218420905426, guid: b0423cd58ac940744b87a74e43271a24,
+        type: 3}
+      propertyPath: ItemConditions.Array.data[0]
+      value: 
+      objectReference: {fileID: 3493445346445012544, guid: 5bd0691c3cd19d442bbb2cb84091c7d3,
+        type: 3}
     - target: {fileID: 6817979910518326187, guid: b0423cd58ac940744b87a74e43271a24,
         type: 3}
       propertyPath: m_Name
