@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Prompt: 
+  _InteractIcon: {fileID: 0}
 --- !u!1 &1485104827864291315
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +209,6 @@ MonoBehaviour:
   horizontalInputAxis: Horizontal
   verticalInputAxis: Vertical
   soundButton: Button2
-  downButton: Button3
   interactButton: Button1
   wavePrefab: {fileID: 8935890006618016965, guid: e6bd9dee80af276498e0dd69b0e780ff,
     type: 3}
@@ -565,7 +565,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
