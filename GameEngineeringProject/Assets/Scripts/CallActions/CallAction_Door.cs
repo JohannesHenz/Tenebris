@@ -14,7 +14,7 @@ public class CallAction_Door : MonoBehaviour, ICallAction
 
     void Start()
     {
-        StartPosition = transform.position;
+        StartPosition = transform.localPosition;
         EndPosition = StartPosition - Direction;
     }
 
