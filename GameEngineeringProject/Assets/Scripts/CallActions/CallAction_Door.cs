@@ -26,7 +26,7 @@ public class CallAction_Door : MonoBehaviour, ICallAction
         Gizmos.DrawSphere(transform.position - Direction, 0.3f);
     }
 
-    public bool CallAction()
+    public bool CallAction(string objectid)
     {
         if (!Opened)
         {
@@ -50,7 +50,6 @@ public class CallAction_Door : MonoBehaviour, ICallAction
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        // zum abschluss auf zielposition forcieren
         if (timeElapsed > Duration)
         {
             transform.localPosition = EndPosition;

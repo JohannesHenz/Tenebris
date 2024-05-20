@@ -11,9 +11,9 @@ public class CallAction_Button : MonoBehaviour, ICallAction
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, Target.transform.position);
     }
-    public bool CallAction()
+    public bool CallAction(string objectid)
     {
-        Target.GetComponent<ICallAction>().CallAction();
+        Target.GetComponent<ICallAction>().CallAction("");
         return true;
     }
 }

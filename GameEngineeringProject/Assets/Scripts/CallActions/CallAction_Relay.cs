@@ -9,14 +9,21 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
     public GameObject[] Senders; // list of sender
     public GameObject[] Targets; // list of targets
 
+    public List<bool> Calls;
+
     public float Timer = 0.0f; // time in seconds - 0.0 is indefinite
     public bool Concurrent = false; // switch to true if all senders have to be active at the same time
 
     private void Start()
     {
-        foreach (var sender in Senders)
+        if (Concurrent)
         {
-
+            Calls = new List<bool>();
+            // if concurrency of all callActions is required get all Senders unique id
+            foreach (var sender in Senders)
+            {
+                Calls.Add(false);
+            }
         }
     }
 
@@ -29,20 +36,21 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
             Gizmos.DrawLine(transform.position, target.transform.position);
         }
     }
-    public bool CallAction()
+
+    public bool CallAction(string objectid)
     {
         if (Concurrent)
         {
             foreach (var target in Targets)
             {
-                target.GetComponent<ICallAction>().CallAction();
+                target.GetComponent<ICallAction>().CallAction("");
             }
         }
         else
         {
             foreach (var target in Targets)
             {
-                target.GetComponent<ICallAction>().CallAction();
+                target.GetComponent<ICallAction>().CallAction("");
             }
         }
         

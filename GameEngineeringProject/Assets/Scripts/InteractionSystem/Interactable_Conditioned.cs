@@ -38,7 +38,7 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
         if (ItemConditionNames[0] == "NoItem")
         {
             Debug.Log("Successfully interacted with: " + gameObject.name + ", which does not require an item");
-            action.CallAction();
+            action.CallAction(gameObject.GetInstanceID().ToString());
             return true;
         }
         else if (ItemConditionNames[0] == "RemoteActivated")
@@ -68,7 +68,7 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                     if (ItemConditionNames.Count == 0)
                     {
                         ItemConditionNames.Add("NoItem");
-                        action.CallAction();
+                        action.CallAction(gameObject.GetInstanceID().ToString());
                     }
                     return true;
                 }
