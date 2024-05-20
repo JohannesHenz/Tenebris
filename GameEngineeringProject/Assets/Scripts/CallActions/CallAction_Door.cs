@@ -50,6 +50,11 @@ public class CallAction_Door : MonoBehaviour, ICallAction
             timeElapsed += Time.deltaTime;
             yield return null;
         }
+        // zum abschluss auf zielposition forcieren
+        if (timeElapsed > Duration)
+        {
+            transform.localPosition = EndPosition;
+        }
     }
 
     private IEnumerator Close()
@@ -62,6 +67,10 @@ public class CallAction_Door : MonoBehaviour, ICallAction
             transform.localPosition = Vector3.Lerp(EndPosition, StartPosition, t);
             timeElapsed += Time.deltaTime;
             yield return null;
+        }
+        if (timeElapsed > Duration)
+        {
+            transform.localPosition = StartPosition;
         }
     }
 }
