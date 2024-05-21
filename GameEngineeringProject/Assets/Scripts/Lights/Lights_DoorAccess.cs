@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Lights_DoorAccess : MonoBehaviour
 {
-    public InteractableConditioned DoorTarget;
+    public InteractableConditioned DoorInteractable;
+    public CallAction_Door DoorCallAction;
     private MeshRenderer mr;
-    public Material AccessGrantedMaterial;
+    public Material AccessGrantedClosedMaterial;
+    public Material AccessGrantedOpenMaterial;
     public Material AccessDeniedMaterial;
     private bool AccessGranted = false;
+    private string state = "Denied";
 
     private void Start()
     {
@@ -18,19 +21,33 @@ public class Lights_DoorAccess : MonoBehaviour
 
     private void CheckAccess()
     {
-        if (!AccessGranted)
+        // checks if access to door has been granted
+        if (DoorCallAction.Opened)
         {
-            // checks if access to door has been granted
-            if (DoorTarget.GetComponent<InteractableConditioned>().ItemConditionNames[0] == "NoItem")
-            {
-                ChangeMaterial();
-                AccessGranted = true;
-            }
+            state = "Open";
+        } else if (!DoorCallAction.Opened && DoorInteractable.ItemConditionNames[0] == "NoItem")
+        {
+            state = "Closed";
+        } else
+        {
+            state = "Denied";
         }
+        ChangeMaterial();
     }
 
     private void ChangeMaterial()
     {
-        mr.material = AccessGrantedMaterial;
+        if (state == "Open")
+        {
+            mr.material = AccessGrantedOpenMaterial;
+        }
+        else if (state == "Closed")
+        {
+            mr.material = AccessGrantedClosedMaterial;
+        }
+        else if (state == "Denied")
+        {
+            mr.material = AccessDeniedMaterial;
+        }
     }
 }

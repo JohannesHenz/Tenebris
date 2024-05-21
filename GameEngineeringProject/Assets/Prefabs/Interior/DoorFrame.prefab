@@ -96,8 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850c1ef23c3b67547b7ddf81ac48475f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorTarget: {fileID: 3460867161081147744}
-  AccessGrantedMaterial: {fileID: 2100000, guid: b95f78541918978428b741fd9e64e5bf,
+  DoorInteractable: {fileID: 3460867161081147744}
+  DoorCallAction: {fileID: 2676307744949357354}
+  AccessGrantedClosedMaterial: {fileID: 2100000, guid: 55fbed87bfe59194897ac84ee9ba332e,
+    type: 2}
+  AccessGrantedOpenMaterial: {fileID: 2100000, guid: b95f78541918978428b741fd9e64e5bf,
     type: 2}
   AccessDeniedMaterial: {fileID: 2100000, guid: f55038e3ea01eaf4d839e2238ddb10f4,
     type: 2}
@@ -197,8 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850c1ef23c3b67547b7ddf81ac48475f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoorTarget: {fileID: 3460867161081147744}
-  AccessGrantedMaterial: {fileID: 2100000, guid: b95f78541918978428b741fd9e64e5bf,
+  DoorInteractable: {fileID: 3460867161081147744}
+  DoorCallAction: {fileID: 2676307744949357354}
+  AccessGrantedClosedMaterial: {fileID: 2100000, guid: 55fbed87bfe59194897ac84ee9ba332e,
+    type: 2}
+  AccessGrantedOpenMaterial: {fileID: 2100000, guid: b95f78541918978428b741fd9e64e5bf,
     type: 2}
   AccessDeniedMaterial: {fileID: 2100000, guid: f55038e3ea01eaf4d839e2238ddb10f4,
     type: 2}
@@ -588,6 +594,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0423cd58ac940744b87a74e43271a24, type: 3}
+--- !u!114 &2676307744949357354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5966383279129790270, guid: b0423cd58ac940744b87a74e43271a24,
+    type: 3}
+  m_PrefabInstance: {fileID: 8640435495887293460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e26c5b66511b0c46b6ff754296829f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3460867161081147744 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5183509121986968948, guid: b0423cd58ac940744b87a74e43271a24,
