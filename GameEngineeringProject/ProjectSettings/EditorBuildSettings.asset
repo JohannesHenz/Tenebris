@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/NavmeshTest.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: Assets/Scenes/UI - Environment.unity
-    guid: d004b1d750e01d24eb0473a41347c1db
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: ae984c936cbebf54d956b291ed3197db
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 1006b11c365ca6544ab1b09351aba12a
   m_configObjects: {}

@@ -9,29 +9,29 @@ public class Timer : MonoBehaviour
 {
     public Slider oxygenSlider;
     public TMP_Text timerText;
-    public float timeLeft;
+    private float time = 90f;
+    private float timeLeft;
+
 
     private bool stopTimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        stopTimer = false;
-        oxygenSlider.maxValue = timeLeft;
-        oxygenSlider.value = timeLeft;
+        ResetTimer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float time = timeLeft - Time.time;
+        timeLeft = time - Time.timeSinceLevelLoad;
 
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time - minutes * 60f);
+        int minutes = Mathf.FloorToInt(timeLeft / 60f);
+        int seconds = Mathf.FloorToInt(timeLeft - minutes * 60f);
 
         string textTime = string.Format("{00:00}:{01:00}", minutes, seconds);
 
-        if (time <= 0)
+        if (timeLeft <= 0)
         {
             stopTimer = true;
         }
@@ -39,7 +39,16 @@ public class Timer : MonoBehaviour
         if (stopTimer == false)
         {
             timerText.text = textTime;
-            oxygenSlider.value = time;
+            oxygenSlider.value = timeLeft;
         }
+    }
+
+    public void ResetTimer()
+    {
+        stopTimer = false;
+        oxygenSlider.maxValue = time;
+        oxygenSlider.value = time;
+        
+        Debug.Log("Resetet time");
     }
 }
