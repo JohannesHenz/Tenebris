@@ -6,8 +6,8 @@ using UnityEngine;
 public class LightsFlicker : MonoBehaviour
 {
     private Light myLight;
-    private float maxInterval = 30;
-    public float maxFlicker = 0.2f;
+    public float maxInterval = 1.0f; // Default value for max interval
+    public float maxFlicker = 0.2f;  // Default value for max flicker duration
 
     float defaultIntensity;
     bool isOn;
@@ -45,5 +45,11 @@ public class LightsFlicker : MonoBehaviour
         }
 
         timer = 0;
+    }
+
+    public void SetFlickerFrequency(float frequency)
+    {
+        maxInterval = frequency;
+        maxFlicker = frequency * 0.1f; // Adjust this multiplier to fine-tune flicker behavior
     }
 }

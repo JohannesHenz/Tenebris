@@ -643,6 +643,8 @@ GameObject:
   - component: {fileID: 1028296428011649115}
   - component: {fileID: 1082810470976232154}
   - component: {fileID: 5660802389778542946}
+  - component: {fileID: 1221497202234172775}
+  - component: {fileID: 3901073865327677227}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -750,3 +752,30 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1221497202234172775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618035454703482309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35235016e890dd44a766bf71fde7335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFlicker: 0.2
+--- !u!114 &3901073865327677227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618035454703482309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fee9e0530b818d40b7680efc48ecd7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 7879317188811847901, guid: 1da962a5b48233e46b71472a108a5645, type: 3}
+  maxDistance: 10
