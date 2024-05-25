@@ -13,7 +13,7 @@ public class MonsterFlicker : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             LightsFlicker lightsFlicker = other.GetComponentInChildren<LightsFlicker>();
-            if (lightsFlicker != null)
+            if (lightsFlicker != null && other.gameObject.name == "Flashlight")
             {
                 float distance = Vector3.Distance(transform.position, other.transform.position);
                 float frequency = Mathf.Lerp(maxFlickerFrequency, 1f, distance/ GetComponent<SphereCollider>().radius);
@@ -27,7 +27,7 @@ public class MonsterFlicker : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             LightsFlicker lightsFlicker = other.GetComponentInChildren<LightsFlicker>();
-            if (lightsFlicker != null)
+            if (lightsFlicker != null && other.gameObject.name == "Flashlight") 
             {
                 lightsFlicker.SetFlickerFrequency(1f);
             }

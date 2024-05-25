@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 3901073865327677227}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -764,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35235016e890dd44a766bf71fde7335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxInterval: 1
   maxFlicker: 0.2
 --- !u!114 &3901073865327677227
 MonoBehaviour:
