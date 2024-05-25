@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEditor.UI;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -18,8 +19,15 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
 
     private bool TimeWindowOpen = false;
 
+    public bool FireOnce = false;
+
     private void Start()
     {
+        if (FireOnce)
+        {
+            this.CallAction(gameObject);
+        }
+
         if (Concurrent)
         {
             // if concurrency of all callActions is required get all Senders unique id
