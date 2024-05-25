@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
 {
     public Slider oxygenSlider;
     public TMP_Text timerText;
-    private float time = 90f;
+    public float time = 90f;
     private float timeLeft;
 
 
@@ -49,6 +49,6 @@ public class Timer : MonoBehaviour
         oxygenSlider.maxValue = time;
         oxygenSlider.value = time;
         
-        Debug.Log("Resetet time");
+        Debug.Log("Resetted time");
     }
 }
