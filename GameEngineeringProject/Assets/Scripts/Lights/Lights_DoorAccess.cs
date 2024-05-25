@@ -10,8 +10,8 @@ public class Lights_DoorAccess : MonoBehaviour
     public Material AccessGrantedClosedMaterial;
     public Material AccessGrantedOpenMaterial;
     public Material AccessDeniedMaterial;
-    private bool AccessGranted = false;
-    private string state = "Denied";
+    private enum State { Denied, Closed, Open};
+    private State state = State.Denied;
 
     private void Start()
     {
@@ -24,28 +24,28 @@ public class Lights_DoorAccess : MonoBehaviour
         // checks if access to door has been granted
         if (DoorCallAction.Opened)
         {
-            state = "Open";
+            state = State.Open;
         } else if (!DoorCallAction.Opened && DoorInteractable.ItemConditionNames[0] == "NoItem")
         {
-            state = "Closed";
+            state = State.Closed;
         } else
         {
-            state = "Denied";
+            state = State.Denied;
         }
         ChangeMaterial();
     }
 
     private void ChangeMaterial()
     {
-        if (state == "Open")
+        if (state == State.Open)
         {
             mr.material = AccessGrantedOpenMaterial;
         }
-        else if (state == "Closed")
+        else if (state == State.Closed)
         {
             mr.material = AccessGrantedClosedMaterial;
         }
-        else if (state == "Denied")
+        else if (state == State.Denied)
         {
             mr.material = AccessDeniedMaterial;
         }
