@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get the necessary Components
         soundManager = GetComponent<SoundManager>();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();  
 
        
@@ -76,10 +76,13 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         Vector3 moveVector = movementInput * playerSpeed * Time.deltaTime;
-        rb.MovePosition(rb.position + moveVector);
+
+        transform.Translate(moveVector, Space.World);
+
         // Align player to face the direction of movement
         if (moveVector != Vector3.zero)
-            rb.rotation = Quaternion.LookRotation(moveVector);
+            transform.rotation = Quaternion.LookRotation(moveVector);
+
     }
 
     void EmitWave()
@@ -91,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
     {
         reviveCount = 10;
         gameObject.GetComponent<Interacter>().Deactivated = true;
-        rb.isKinematic = true;
         reviveCollider.SetActive(true);
         isDown = true;
         renderer.material = downedMaterial;  // Change the material to the downed state
@@ -106,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.isKinematic = false;
             gameObject.GetComponent<Interacter>().Deactivated = false;
             isDown = false;
             renderer.material = normalMaterial;  // Revert the material to the normal state
