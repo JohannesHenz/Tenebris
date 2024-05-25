@@ -26,7 +26,7 @@ public class CallAction_Door : MonoBehaviour, ICallAction
         Gizmos.DrawSphere(transform.position - Direction, 0.3f);
     }
 
-    public bool CallAction(string objectid)
+    public bool CallAction(GameObject sender)
     {
         if (!Opened)
         {

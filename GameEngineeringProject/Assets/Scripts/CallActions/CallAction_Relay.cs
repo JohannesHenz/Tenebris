@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -9,20 +11,21 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
     public GameObject[] Senders; // list of sender
     public GameObject[] Targets; // list of targets
 
-    public List<bool> Calls;
+    public Dictionary<int, bool> CallTimes = new Dictionary<int, bool>();
 
-    public float Timer = 0.0f; // time in seconds - 0.0 is indefinite
+    public float Timer = 0.0f; // time in seconds - 0.0 is indefinite - 0.1 is fast 0.3 is slow
     public bool Concurrent = false; // switch to true if all senders have to be active at the same time
+
+    private bool TimeWindowOpen = false;
 
     private void Start()
     {
         if (Concurrent)
         {
-            Calls = new List<bool>();
             // if concurrency of all callActions is required get all Senders unique id
             foreach (var sender in Senders)
             {
-                Calls.Add(false);
+                CallTimes.Add(sender.GetInstanceID(), false);
             }
         }
     }
@@ -30,33 +33,64 @@ public class CallAction_Relay : MonoBehaviour, ICallAction
     private void OnDrawGizmos()
     {
         //Gizmos.DrawGUITexture(transform.position, );
-        Gizmos.color = Color.blue; // outgoing color
+        Gizmos.color = Color.yellow; // outgoing color
+        if (Concurrent) {Gizmos.color = Color.blue;} // overload for concurrent
+        
         foreach (var target in Targets)
         {
             Gizmos.DrawLine(transform.position, target.transform.position);
         }
     }
 
-    public bool CallAction(string objectid)
+    public bool CallAction(GameObject sender)
     {
         if (Concurrent)
         {
-            foreach (var target in Targets)
+            Debug.Log("CallAction called with id: " + sender.GetInstanceID());
+
+            CallTimes[sender.GetInstanceID()] = true;
+
+            if (!TimeWindowOpen && Timer > 0.0f)
             {
-                target.GetComponent<ICallAction>().CallAction("");
+                TimeWindowOpen = true;
+                // only reset if timer is on a positive number
+                Invoke("ResetTimer", Timer);
+            }
+
+            if (CheckConcurrency())
+            {
+                foreach (var target in Targets)
+                {
+                    target.GetComponent<ICallAction>().CallAction(gameObject);
+                }
             }
         }
         else
         {
             foreach (var target in Targets)
             {
-                target.GetComponent<ICallAction>().CallAction("");
+                target.GetComponent<ICallAction>().CallAction(gameObject);
             }
         }
-        
-        Debug.Log("CallAction_Relay called");
         return true;
     }
 
+    private bool CheckConcurrency()
+    {
+        foreach (var entry in CallTimes.Keys.ToList())
+        {
+            if (!CallTimes[entry]) return false;
+        }
+        return true;
+    }
 
+    private void ResetTimer()
+    {
+        foreach (var entry in CallTimes.Keys.ToList())
+        {
+            CallTimes[entry] = false;
+        }
+        Debug.Log("CallTimes reset");
+        TimeWindowOpen = false;
+    }
 }

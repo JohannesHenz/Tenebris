@@ -11,10 +11,10 @@ public class CallAction_Generator : MonoBehaviour, ICallAction
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, Target.transform.position);
     }
-    public bool CallAction(string objectid)
+    public bool CallAction(GameObject sender)
     {
         Debug.Log("Generator active");
-        Target.GetComponent<ICallAction>().CallAction("");
+        Target.GetComponent<ICallAction>().CallAction(gameObject);
         return true;
     }
 

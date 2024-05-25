@@ -10,7 +10,7 @@ public class CallAction_Light : MonoBehaviour, ICallAction
         SelfLight = GetComponent<Light>();
     }
 
-    public bool CallAction(string objectid)
+    public bool CallAction(GameObject sender)
     {
         if (SelfLight.enabled)
         {

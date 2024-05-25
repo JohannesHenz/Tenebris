@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ICallAction
 {
-    public bool CallAction(string objectid);
+    public bool CallAction(GameObject sender);
 }
