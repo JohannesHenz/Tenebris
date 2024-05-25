@@ -1830,6 +1830,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_PowerController
       objectReference: {fileID: 0}
+    - target: {fileID: 354862911029300524, guid: 25e97d8a85d35fb4fa0b81b0180bc462,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78cd4cecfc9a2644ab1fd018d10695a6, type: 2}
     - target: {fileID: 792598670854125678, guid: 25e97d8a85d35fb4fa0b81b0180bc462,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1840,6 +1845,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.62500334
       objectReference: {fileID: 0}
+    - target: {fileID: 1525978432931094037, guid: 25e97d8a85d35fb4fa0b81b0180bc462,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78cd4cecfc9a2644ab1fd018d10695a6, type: 2}
     - target: {fileID: 1547086069003887128, guid: 25e97d8a85d35fb4fa0b81b0180bc462,
         type: 3}
       propertyPath: m_CastShadows
@@ -1920,6 +1930,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5759465174748151034, guid: 25e97d8a85d35fb4fa0b81b0180bc462,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78cd4cecfc9a2644ab1fd018d10695a6, type: 2}
     - target: {fileID: 6054773191352128762, guid: 25e97d8a85d35fb4fa0b81b0180bc462,
         type: 3}
       propertyPath: m_CastShadows
