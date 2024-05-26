@@ -179,11 +179,11 @@ GameObject:
   - component: {fileID: 5308070570310875150}
   - component: {fileID: 7711742101861940577}
   - component: {fileID: 6711517401599315942}
-  - component: {fileID: 5094161404849002768}
+  - component: {fileID: 3888865319243312203}
   - component: {fileID: 7274636904809276657}
   m_Layer: 0
   m_Name: Point Light
-  m_TagString: FlickerLight
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &5094161404849002768
+--- !u!114 &3888865319243312203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3357138827813996917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b35235016e890dd44a766bf71fde7335, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fec11d412f6b6f4e9932943c4674555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxFlicker: 0.2
