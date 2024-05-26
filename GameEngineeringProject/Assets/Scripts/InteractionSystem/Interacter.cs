@@ -25,6 +25,9 @@ public class Interacter : MonoBehaviour
 
     public bool Deactivated = false;
 
+    private bool InputBlocked = false;
+    private float InputDelay = 1.0f;
+
 
     /// Added by Johannes for the TaskSound
     private SoundManager soundManager;  // Reference to the SoundManager
@@ -33,6 +36,7 @@ public class Interacter : MonoBehaviour
 
     void Start()
     {
+        InputBlocked = false;
         soundManager = GetComponentInParent<SoundManager>();  // Ensure the sound manager is attached to the parent
     }
 
@@ -50,12 +54,15 @@ public class Interacter : MonoBehaviour
             {
                 if (!_uiInteractable.IsDisplayed) _uiInteractable.SetUp(_Interactable.DisplayedInteractIcon); // does all the setup for ui display no action yet
 
-                if (Input.GetButtonDown(interactButton))
+                if (Input.GetButtonDown(interactButton) && !InputBlocked)
                 {
+                    InputBlocked = true;
                     _Interactable.Interact(this);
-                         /// Added by Johannes for the TaskSound
-                         soundManager.EmitTaskSound(taskSoundRadius);
-                         /// 
+                    /// Added by Johannes for the TaskSound
+                    soundManager.EmitTaskSound(taskSoundRadius);
+                    /// 
+                    // start cooldown coroutine
+                    Invoke("UnblockInput", InputDelay);
                 }
             }
         } else
@@ -71,6 +78,11 @@ public class Interacter : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_InteractionPoint.position, _InteractionPointRadius);
+    }
+
+    private void UnblockInput()
+    {
+        InputBlocked = false;
     }
 
 }
