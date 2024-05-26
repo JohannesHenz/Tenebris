@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lights_DangerWubWub : MonoBehaviour
+public class Lights_Wubwub : MonoBehaviour
 {
     private Light SelfLight;
     // does the wubwub
@@ -14,6 +14,6 @@ public class Lights_DangerWubWub : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SelfLight.intensity = Mathf.Sin(Time.frameCount * 0.3f) * 3.0f + 6;
+        SelfLight.range = Mathf.Sin(Time.frameCount * 0.05f) * 0.5f + 6;
     }
 }
