@@ -5079,6 +5079,16 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6150943
       objectReference: {fileID: 0}
+    - target: {fileID: 1607304391235647953, guid: e6f4c157cfec304499f931ce68f996d6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607304391235647953, guid: e6f4c157cfec304499f931ce68f996d6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37.36
+      objectReference: {fileID: 0}
     - target: {fileID: 3025279890823407699, guid: e6f4c157cfec304499f931ce68f996d6,
         type: 3}
       propertyPath: m_Color.b
@@ -5164,6 +5174,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirlockDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 8639868975077356803, guid: e6f4c157cfec304499f931ce68f996d6,
+        type: 3}
+      propertyPath: Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 971e66101b7b9c44c8734699bf1cfacc, type: 2}
+    - target: {fileID: 8652521954415278441, guid: e6f4c157cfec304499f931ce68f996d6,
+        type: 3}
+      propertyPath: Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 971e66101b7b9c44c8734699bf1cfacc, type: 2}
     m_RemovedComponents:
     - {fileID: 2525566923414602366, guid: e6f4c157cfec304499f931ce68f996d6, type: 3}
     - {fileID: 1775689199453644739, guid: e6f4c157cfec304499f931ce68f996d6, type: 3}
