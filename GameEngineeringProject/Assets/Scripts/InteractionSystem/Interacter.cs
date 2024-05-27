@@ -31,7 +31,7 @@ public class Interacter : MonoBehaviour
 
     /// Added by Johannes for the TaskSound
     private SoundManager soundManager;  // Reference to the SoundManager
-    private float taskSoundRadius = 60.0f;
+
     /// 
 
     void Start()

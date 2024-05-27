@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     private float playerSpeed = 6.0f;
     private Renderer renderer;
-    private float noiseMakerRadius = 10.0f;
-    private float stepRadius = 3.0f;
     private Vector3 movementInput;
     private float stepSoundTimer = 0f;
     private float stepSoundInterval = 0.2f;
@@ -70,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
             if (stepSoundTimer >= stepSoundInterval)
             {
                 soundManager.EmitSound(SoundType.Step);
-                Debug.Log("StepSound Emitted");
                 stepSoundTimer = 0f; // Reset timer
             }
         }
