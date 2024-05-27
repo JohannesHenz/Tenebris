@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CallAction_Door : MonoBehaviour, ICallAction
 {
@@ -12,8 +13,11 @@ public class CallAction_Door : MonoBehaviour, ICallAction
     public Vector3 Direction = Vector3.zero; // direction to move in
     public float Duration = 0.5f; // speed
 
+    private NavMeshObstacle nmObstacle;
+
     void Start()
     {
+        nmObstacle = GetComponent<NavMeshObstacle>();
         StartPosition = transform.localPosition;
         EndPosition = StartPosition - Direction;
     }
@@ -43,7 +47,7 @@ public class CallAction_Door : MonoBehaviour, ICallAction
     private IEnumerator Open()
     {
         float timeElapsed = 0;
-
+        
         while (timeElapsed < Duration) {
             float t = timeElapsed / Duration;
             transform.localPosition = Vector3.Lerp(StartPosition, EndPosition, t);
@@ -53,13 +57,14 @@ public class CallAction_Door : MonoBehaviour, ICallAction
         if (timeElapsed > Duration)
         {
             transform.localPosition = EndPosition;
+            nmObstacle.enabled = false;
         }
     }
 
     private IEnumerator Close()
     {
         float timeElapsed = 0;
-
+        nmObstacle.enabled = true;
         while (timeElapsed < Duration)
         {
             float t = timeElapsed / Duration;
