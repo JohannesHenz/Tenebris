@@ -7,7 +7,7 @@ public class MonsterProximityFlicker : MonoBehaviour
     public GameObject monster; // Assign the monster GameObject in the inspector
     private LightsFlicker lightsFlicker;
     private Light myLight;
-    public float maxDistance = 10.0f; // Maximum distance for full flicker effect
+    public float maxDistance = 5.0f; // Maximum distance for full flicker effect
 
     private void Start()
     {

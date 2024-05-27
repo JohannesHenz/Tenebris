@@ -294,6 +294,10 @@ MonoBehaviour:
     type: 3}
   taskSoundPrefab: {fileID: 4220268661115184806, guid: 49b8518a579e7234fb22a2fa3772c1d3,
     type: 3}
+  SoundwaveBig: {fileID: 1331045973638355707, guid: 57ee42e3f550c964788b4ac5b88c3804,
+    type: 3}
+  SoundwaveSmall: {fileID: 1331045973638355707, guid: dd3ce4ecd4845d44392b78512db8c84b,
+    type: 3}
 --- !u!54 &-7800743322887505965
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -646,7 +650,7 @@ GameObject:
   - component: {fileID: 1221497202234172775}
   - component: {fileID: 3901073865327677227}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Flashlight
   m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

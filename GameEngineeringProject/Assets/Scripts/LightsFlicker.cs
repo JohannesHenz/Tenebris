@@ -13,6 +13,7 @@ public class LightsFlicker : MonoBehaviour
     bool isOn;
     float timer;
     float delay;
+    private bool shouldFlicker = false;
 
     private void Start()
     {
@@ -20,14 +21,6 @@ public class LightsFlicker : MonoBehaviour
         defaultIntensity = myLight.intensity;
     }
 
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer > delay)
-        {
-            Flicker();
-        }
-    }
 
     public void Flicker()
     {
@@ -51,5 +44,16 @@ public class LightsFlicker : MonoBehaviour
     {
         maxInterval = frequency;
         maxFlicker = frequency * 0.1f; // Adjust this multiplier to fine-tune flicker behavior
+    }
+
+    public void StartFlickering()
+    {
+        shouldFlicker = true;
+    }
+
+    public void StopFlickering()
+    {
+        shouldFlicker = false;
+        myLight.intensity = defaultIntensity; // Ensure the light returns to its default state
     }
 }

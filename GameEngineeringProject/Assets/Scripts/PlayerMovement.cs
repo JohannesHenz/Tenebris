@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public SoundManager soundManager;
     public int reviveCount = 0;
 
-    private Rigidbody rb;
+
     private float playerSpeed = 6.0f;
     private Renderer renderer;
     private float noiseMakerRadius = 10.0f;
@@ -27,12 +27,15 @@ public class PlayerMovement : MonoBehaviour
     private float stepSoundTimer = 0f;
     private float stepSoundInterval = 0.2f;
 
+    //private enum SoundType { Task, Step, NoiseMaker };
+
     void Start()
     {
         // Get the necessary Components
         soundManager = GetComponent<SoundManager>();
         //rb = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();  
+
 
        
     }
@@ -52,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
              
         if (Input.GetButtonDown(soundButton)) //NoisMakerSound 
         {
-            soundManager.EmitNoiseMakerSound(noiseMakerRadius);  
+            soundManager.EmitSound(SoundType.NoiseMaker);  
            
         }
        
@@ -66,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
             stepSoundTimer += Time.deltaTime; //Only allow a certain number of StepSounds per second
             if (stepSoundTimer >= stepSoundInterval)
             {
-                soundManager.EmitStepSound(stepRadius);
+                soundManager.EmitSound(SoundType.Step);
+                Debug.Log("StepSound Emitted");
                 stepSoundTimer = 0f; // Reset timer
             }
         }
