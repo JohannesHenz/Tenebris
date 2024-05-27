@@ -135,11 +135,11 @@ public class MonsterController : MonoBehaviour
         if (path.status == NavMeshPathStatus.PathComplete && !IsPathObstructed(path))
         {
             agent.SetDestination(destination);
-            Debug.Log("Gültiger Pfad zum Ziel gesetzt.");
+            Debug.Log("Valid path set");
         }
         else
         {
-            Debug.Log("Kein gültiger Pfad zum Ziel vorhanden.");
+            Debug.Log("Invalid path set");
         }
     }
 
@@ -151,7 +151,7 @@ public class MonsterController : MonoBehaviour
             Vector3 end = path.corners[i + 1];
             if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
             {
-                Debug.Log("Pfad durch Hindernis blockiert: " + hit.collider.name);
+                Debug.Log("Path blocked " + hit.collider.name);
                 return true;
             }
         }
