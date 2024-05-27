@@ -21,7 +21,7 @@ public class WaypointMover : MonoBehaviour
         if (agent.remainingDistance <= distanceThreshold && GetComponent<MonsterController>().currentState == State.Roaming)
         {
             // Set the next waypoint target
-            currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+            currentWaypoint = waypoints.GetRandomWaypoint(currentWaypoint);
             MoveObject();
         }
     }
@@ -31,11 +31,11 @@ public class WaypointMover : MonoBehaviour
     public void StartRoaming()
     {
         // Set position to start waypoint
-        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        currentWaypoint = waypoints.GetRandomWaypoint(currentWaypoint);
         transform.position = currentWaypoint.position;
 
         // Set the next waypoint target
-        currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
+        currentWaypoint = waypoints.GetRandomWaypoint(currentWaypoint);
         MoveObject();
     }
 

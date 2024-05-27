@@ -35,6 +35,27 @@ public class MonsterController : MonoBehaviour
     {
 
         // ************ Define states ****************
+        if (!agent.hasPath)
+        {
+            Debug.Log("Kein Pfad gefunden.");
+        }
+
+        switch (agent.pathStatus)
+        {
+            case NavMeshPathStatus.PathInvalid:
+                // Pfad ist ungültig, Suche abbrechen
+                Debug.Log("Ungültiger Pfad erkannt.");
+                break;
+            case NavMeshPathStatus.PathPartial:
+                // Teilweise gültiger Pfad, aber nicht vollständig erreichbar
+                Debug.Log("Teilweise gültiger Pfad, Ziel nicht vollständig erreichbar.");
+                break;
+            case NavMeshPathStatus.PathComplete:
+                // Pfad ist vollständig gültig, weiter suchen
+                Debug.Log("Gültiger Pfad erkannt.");
+                break;
+        }
+
 
         // The monster will checkout the source of the made noice
         if (currentState == State.Checkout && agent.remainingDistance <= GetComponent<WaypointMover>().distanceThreshold)

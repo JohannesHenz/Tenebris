@@ -5,18 +5,18 @@ using UnityEngine;
 public class Waypoints : MonoBehaviour
 {
     private float waypointSize = 1f;
-    
+
     // Draw a waypoint on the scene
     private void OnDrawGizmos()
     {
         // Create the wired sphere on every child position
         foreach(Transform t in transform)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(t.position, waypointSize);
         }
 
-        // Draw a line between every child in ascending order
+        /*/ Draw a line between every child in ascending order
         Gizmos.color = Color.yellow;
         for(int i = 0; i < transform.childCount - 1; i++)
         {
@@ -24,9 +24,11 @@ public class Waypoints : MonoBehaviour
         }
 
         Gizmos.DrawLine(transform.GetChild(transform.childCount - 1).position, transform.GetChild(0).position);
+        */
     }
 
-    // Get the next waypoint after current waypoint
+
+    /*/ Get the next waypoint after current waypoint
     public Transform GetNextWaypoint(Transform currentWaypoint)
     {
         //Starting position or repeat cycle again
@@ -40,5 +42,21 @@ public class Waypoints : MonoBehaviour
             return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
         }
 
+    }
+    */
+
+    public Transform GetRandomWaypoint(Transform currentWaypoint)
+    {
+        //Starting position is the first child
+        if (currentWaypoint == null)
+        {
+            return transform.GetChild(0);
+        }
+        //If it's not null than choose a random Waypoint
+        else
+        {
+            int randomWaypointindex = Random.Range(0, transform.childCount - 1);
+            return transform.GetChild(randomWaypointindex);
+        }
     }
 }
