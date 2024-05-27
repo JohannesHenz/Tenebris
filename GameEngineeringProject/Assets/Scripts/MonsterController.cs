@@ -15,6 +15,9 @@ public class MonsterController : MonoBehaviour
     private float hearingRadius = 15.0f;
     [SerializeField] public State currentState;
 
+    //Layer that count as obstacle
+    public LayerMask obstacleLayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,28 +38,6 @@ public class MonsterController : MonoBehaviour
     {
 
         // ************ Define states ****************
-        if (!agent.hasPath)
-        {
-            Debug.Log("Kein Pfad gefunden.");
-        }
-
-        switch (agent.pathStatus)
-        {
-            case NavMeshPathStatus.PathInvalid:
-                // Pfad ist ungültig, Suche abbrechen
-                Debug.Log("Ungültiger Pfad erkannt.");
-                break;
-            case NavMeshPathStatus.PathPartial:
-                // Teilweise gültiger Pfad, aber nicht vollständig erreichbar
-                Debug.Log("Teilweise gültiger Pfad, Ziel nicht vollständig erreichbar.");
-                break;
-            case NavMeshPathStatus.PathComplete:
-                // Pfad ist vollständig gültig, weiter suchen
-                Debug.Log("Gültiger Pfad erkannt.");
-                break;
-        }
-
-
         // The monster will checkout the source of the made noice
         if (currentState == State.Checkout && agent.remainingDistance <= GetComponent<WaypointMover>().distanceThreshold)
         {
@@ -74,7 +55,8 @@ public class MonsterController : MonoBehaviour
         {
             if(target != null)
             {
-                agent.SetDestination(target.GetComponent<Transform>().position);
+                TrySetDestination(target.GetComponent<Transform>().position);
+                //agent.SetDestination();
             }
             
         }
@@ -93,14 +75,16 @@ public class MonsterController : MonoBehaviour
         if (other.gameObject.CompareTag("NoiseMaker"))
         {
             // First priority is the Noice Maker to leave player option to distract monster
-            agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
+            TrySetDestination(other.gameObject.GetComponent<Transform>().position);
+            //agent.SetDestination();
             currentState = State.Checkout;
             agent.speed = chasingCheckoutSpeed;
         }
         else if (other.gameObject.CompareTag("TaskSound") && currentState != State.Checkout)
         {
             //Second Priority are Tasks - monster wants to check them out and destroy them
-            agent.SetDestination(other.gameObject.GetComponent<Transform>().position);
+            TrySetDestination(other.gameObject.GetComponent<Transform>().position);
+            //agent.SetDestination();
             currentState = State.Checkout;
             agent.speed = chasingCheckoutSpeed;
         }
@@ -142,4 +126,38 @@ public class MonsterController : MonoBehaviour
         currentState = State.Roaming;
         agent.speed = roamingSpeed;
     }
+
+    public void TrySetDestination(Vector3 destination )
+    {
+        NavMeshPath path = new NavMeshPath();
+        agent.CalculatePath(destination, path);
+
+        if (path.status == NavMeshPathStatus.PathComplete && !IsPathObstructed(path))
+        {
+            agent.SetDestination(destination);
+            Debug.Log("Gültiger Pfad zum Ziel gesetzt.");
+        }
+        else
+        {
+            Debug.Log("Kein gültiger Pfad zum Ziel vorhanden.");
+        }
+    }
+
+    bool IsPathObstructed(NavMeshPath path)
+    {
+        for (int i = 0; i < path.corners.Length - 1; i++)
+        {
+            Vector3 start = path.corners[i];
+            Vector3 end = path.corners[i + 1];
+            if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
+            {
+                Debug.Log("Pfad durch Hindernis blockiert: " + hit.collider.name);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 }

@@ -42,6 +42,7 @@ public class WaypointMover : MonoBehaviour
     private void MoveObject()
     {
         // Move Object along the path
-        agent.SetDestination(currentWaypoint.position);
+        GetComponent<MonsterController>().TrySetDestination(currentWaypoint.position);
+        //agent.SetDestination(currentWaypoint.position);
     }
 }

@@ -122,7 +122,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7879317188811847901}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 2
+  m_Radius: 0.5
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -149,6 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8483489085164218276}
   currentState: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &7472318812329470411
 Rigidbody:
   m_ObjectHideFlags: 0
