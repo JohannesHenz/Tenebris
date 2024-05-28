@@ -10,6 +10,7 @@ TagManager:
   - StepSound
   - FlickerLight
   - Flashlight
+  - Breakable
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Interactable
   - Entity
   - Door
-  - 
+  - Breakable
   - 
   - 
   - 
