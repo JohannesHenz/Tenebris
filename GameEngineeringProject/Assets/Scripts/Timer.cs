@@ -9,8 +9,9 @@ public class Timer : MonoBehaviour
 {
     public Slider oxygenSlider;
     public TMP_Text timerText;
-    public float time = 90f;
+    public float time = 600f;
     private float timeLeft;
+    private float timerSpeed = 1;
 
 
     private bool stopTimer;
@@ -24,7 +25,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft = time - Time.timeSinceLevelLoad;
+        timeLeft = time - Time.timeSinceLevelLoad * timerSpeed;
 
         int minutes = Mathf.FloorToInt(timeLeft / 60f);
         int seconds = Mathf.FloorToInt(timeLeft - minutes * 60f);
@@ -50,5 +51,19 @@ public class Timer : MonoBehaviour
         oxygenSlider.value = time;
         
         Debug.Log("Resetted time");
+    }
+
+    // ----  Controll timer speed ----
+    public void resetTimerSpeed()
+    {
+        timerSpeed = 1;
+    }
+
+    public void setTimerSpeed(float value)
+    {
+        if (value >= 0)
+        {
+            timerSpeed = value;
+        }
     }
 }

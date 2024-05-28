@@ -127,6 +127,7 @@ public class MonsterController : MonoBehaviour
         agent.speed = roamingSpeed;
     }
 
+    //Calculates if set Destination is even possible
     public void TrySetDestination(Vector3 destination )
     {
         NavMeshPath path = new NavMeshPath();
@@ -143,6 +144,7 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    //Checks if Obstacle is on the given path which makes it impossible to reach destination
     bool IsPathObstructed(NavMeshPath path)
     {
         for (int i = 0; i < path.corners.Length - 1; i++)
