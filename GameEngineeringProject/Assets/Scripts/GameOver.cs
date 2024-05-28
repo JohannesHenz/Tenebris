@@ -5,23 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public GameObject deathScreenMenuUI;
-    public GameObject gameManager;
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void RetryGame()
     {
-        Debug.Log("Reloading Scene");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Reloading MainScene");
+        SceneManager.LoadScene("MainScene");
+    }
 
-        gameManager.GetComponent<Timer>().ResetTimer();
+    public void GoBackToTitleScreen()
+    {
+        Debug.Log("Return to TitleScreen");
+        SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quitting Game");
+        Application.Quit();
     }
 
 }
