@@ -50,7 +50,7 @@ public class Timer : MonoBehaviour
         oxygenSlider.maxValue = time;
         oxygenSlider.value = time;
         
-        Debug.Log("Resetted time");
+        //Debug.Log("Resetted time");
     }
 
     // ----  Controll timer speed ----

@@ -9,7 +9,7 @@ public class WaypointMover : MonoBehaviour
     [SerializeField] private Waypoints waypoints;
     public NavMeshAgent agent;
 
-    private Transform currentWaypoint;
+    private Transform currentWaypoint = null;
 
     public float distanceThreshold = 1.9f;
 

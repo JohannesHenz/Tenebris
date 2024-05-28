@@ -71,7 +71,7 @@ public class MonsterController : MonoBehaviour
     {
 
         // If monster ever collide with triggerSound it will pursuite the noise source
-        
+
         if (other.gameObject.CompareTag("NoiseMaker"))
         {
             // First priority is the Noice Maker to leave player option to distract monster
@@ -94,6 +94,16 @@ public class MonsterController : MonoBehaviour
             currentState = State.Chasing;
             agent.speed = chasingCheckoutSpeed;
             target = other.gameObject;
+        }
+
+        // Cecks if it collides with something breakable
+        if (other.gameObject.CompareTag("Breakable"))
+        {
+            if (!other.gameObject.GetComponent<BreakSelf>().isDestroyed)
+            {
+                other.gameObject.GetComponent<BreakSelf>().BreakObject();
+            }
+            
         }
     }
     // *******************************************************************
@@ -136,12 +146,12 @@ public class MonsterController : MonoBehaviour
         if (path.status == NavMeshPathStatus.PathComplete && !IsPathObstructed(path))
         {
             agent.SetDestination(destination);
-            Debug.Log("Valid path set");
-        }
+            //Debug.Log("Valid path set");
+        }/*
         else
         {
             Debug.Log("Invalid path set");
-        }
+        }*/
     }
 
     //Checks if Obstacle is on the given path which makes it impossible to reach destination
@@ -153,7 +163,7 @@ public class MonsterController : MonoBehaviour
             Vector3 end = path.corners[i + 1];
             if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
             {
-                Debug.Log("Path blocked " + hit.collider.name);
+                //Debug.Log("Path blocked " + hit.collider.name);
                 return true;
             }
         }
