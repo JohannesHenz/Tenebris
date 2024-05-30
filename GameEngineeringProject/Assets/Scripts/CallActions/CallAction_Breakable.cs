@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CallAction_Breakable : MonoBehaviour, ICallAction
 {
-    public MeshRenderer mesh;
     public GameObject InteractableObject;
+    public GameObject TriggerObject;
 
     public bool isDestroyed = false;
 
@@ -29,10 +29,10 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     public void BreakObject()
     {
         // *** play breaking Sound ***
-        //...
 
-        mesh.enabled = false;
         isDestroyed = true;
+        InteractableObject.SetActive(true);
+        TriggerObject.SetActive(false);
 
         // Activate Oxygen Event
     }
@@ -40,11 +40,10 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     public void RepairObject()
     {
         // *** play repairing Sound ?  ***
-        //...
 
-        mesh.enabled = true;
         isDestroyed = false;
-
+        InteractableObject.SetActive(false);
+        TriggerObject.SetActive(true);
         // Deactivate Oxygen Event
     }
 }

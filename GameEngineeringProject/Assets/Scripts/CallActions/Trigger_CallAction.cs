@@ -5,10 +5,20 @@ using UnityEngine;
 public class Trigger_CallAction : MonoBehaviour
 {
     // calls action of target when trigger is entered
-    public ICallAction Target;
+    public GameObject Target;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDrawGizmos()
     {
-        Target.CallAction(gameObject);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, Target.transform.position);
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Monster"))
+        {
+            Target.GetComponent<ICallAction>().CallAction(gameObject);
+            Debug.Log("Triggered by " + other);
+        }
     }
 }
