@@ -19,11 +19,15 @@ public class PlayerMovement : MonoBehaviour
     public int reviveCount = 0;
 
 
-    private float playerSpeed = 6.0f;
+    [SerializeField] private float Acceleration = 5.0f;
+    [SerializeField] private float Deceleration = 5.0f;
+    [SerializeField] private float MaxSpeed = 5.0f;
+    private Rigidbody RigidBody;
+
     private Renderer renderer;
     private Vector3 movementInput;
     private float stepSoundTimer = 0f;
-    private float stepSoundInterval = 0.2f;
+    private float stepSoundInterval = 0.5f;
 
     //private enum SoundType { Task, Step, NoiseMaker };
 
@@ -32,32 +36,36 @@ public class PlayerMovement : MonoBehaviour
         // Get the necessary Components
         soundManager = GetComponent<SoundManager>();
         //rb = GetComponent<Rigidbody>();
-        renderer = GetComponent<Renderer>();  
-
-
-       
+        renderer = GetComponent<Renderer>();
+        RigidBody = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (!isDown) //Don't Move or Make StepSound if player is down
         {
             movementInput = new Vector3(Input.GetAxis(horizontalInputAxis), 0, Input.GetAxis(verticalInputAxis)).normalized;
+            if (movementInput != Vector3.zero) RigidBody.rotation = Quaternion.LookRotation(movementInput);
             if (movementInput != Vector3.zero)
             {
-                MovePlayer();
-                HandleStepSound();
-            }
+                // Move Player
+                RigidBody.AddForce(movementInput * Acceleration, ForceMode.Force);
+                // clamp speed to maxspeed
+                if (RigidBody.velocity.magnitude > MaxSpeed) RigidBody.velocity = RigidBody.velocity.normalized * MaxSpeed;
+                // Align player to face the direction of movement
 
+                HandleStepSound();
+            } else
+            {
+                // if no input is given, decelerate
+                RigidBody.AddForce(RigidBody.velocity * -Deceleration, ForceMode.Force);
+            } 
         }
              
         if (Input.GetButtonDown(soundButton)) //NoisMakerSound 
         {
             soundManager.EmitSound(SoundType.NoiseMaker);  
-           
-        }
-       
-        
+        }        
     }
 
     private void HandleStepSound()
@@ -71,19 +79,6 @@ public class PlayerMovement : MonoBehaviour
                 stepSoundTimer = 0f; // Reset timer
             }
         }
-    }
-
-
-    private void MovePlayer()
-    {
-        Vector3 moveVector = movementInput * playerSpeed * Time.deltaTime;
-
-        transform.Translate(moveVector, Space.World);
-
-        // Align player to face the direction of movement
-        if (moveVector != Vector3.zero)
-            transform.rotation = Quaternion.LookRotation(moveVector);
-
     }
 
     void EmitWave()
