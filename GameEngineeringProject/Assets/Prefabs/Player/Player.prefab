@@ -219,7 +219,7 @@ MonoBehaviour:
   reviveCount: 0
   Acceleration: 70
   Deceleration: 70
-  MaxSpeed: 6
+  MaxSpeed: 4
 --- !u!114 &-2299261887808369339
 MonoBehaviour:
   m_ObjectHideFlags: 0

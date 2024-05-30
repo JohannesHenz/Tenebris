@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
         if (!isDown) //Don't Move or Make StepSound if player is down
         {
             movementInput = new Vector3(Input.GetAxis(horizontalInputAxis), 0, Input.GetAxis(verticalInputAxis)).normalized;
-            if (movementInput != Vector3.zero) RigidBody.rotation = Quaternion.LookRotation(movementInput);
             if (movementInput != Vector3.zero)
             {
                 // Move Player
@@ -53,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
                 // clamp speed to maxspeed
                 if (RigidBody.velocity.magnitude > MaxSpeed) RigidBody.velocity = RigidBody.velocity.normalized * MaxSpeed;
                 // Align player to face the direction of movement
-
+                RigidBody.rotation = Quaternion.LookRotation(movementInput);
                 HandleStepSound();
             } else
             {
