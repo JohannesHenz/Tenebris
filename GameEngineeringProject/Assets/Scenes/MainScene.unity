@@ -580,7 +580,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112849605}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b91ec0c1c50b2ff42b25767a19cc470a, type: 3}
   m_Name: 
@@ -1996,6 +1996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 7127829081074034585, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: m_Name
+      value: SteamParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 7643853104140055958, guid: 017c6796d1818194a801914768f59ccb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2064,11 +2069,6 @@ PrefabInstance:
       propertyPath: waypoints
       value: 
       objectReference: {fileID: 644888453}
-    - target: {fileID: 3814633903294175407, guid: 1da962a5b48233e46b71472a108a5645,
-        type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 4096
-      objectReference: {fileID: 0}
     - target: {fileID: 4880975063990462911, guid: 1da962a5b48233e46b71472a108a5645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2118,11 +2118,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7435987624388823914, guid: 1da962a5b48233e46b71472a108a5645,
-        type: 3}
-      propertyPath: obstacleLayer.m_Bits
-      value: 2432
       objectReference: {fileID: 0}
     - target: {fileID: 7879317188811847901, guid: 1da962a5b48233e46b71472a108a5645,
         type: 3}

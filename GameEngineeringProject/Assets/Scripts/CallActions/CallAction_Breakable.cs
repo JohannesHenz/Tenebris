@@ -6,6 +6,7 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
 {
     public GameObject InteractableObject;
     public GameObject TriggerObject;
+    public GameObject EffectsObject;
 
     public bool isDestroyed = false;
 
@@ -23,6 +24,7 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
         {
             RepairObject();
         }
+        EffectsObject.GetComponent<ICallAction>().CallAction(gameObject);
         return true;
     }
 
