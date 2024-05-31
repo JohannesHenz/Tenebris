@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movementInput;
     private float stepSoundTimer = 0f;
     private float stepSoundInterval = 0.5f;
+    private bool isWalking = false;
 
     //private enum SoundType { Task, Step, NoiseMaker };
 
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         //rb = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
         RigidBody = GetComponent<Rigidbody>();
+
+        InvokeRepeating("HandleStepSound", 0f, stepSoundInterval);
     }
 
     void LateUpdate()
@@ -48,16 +51,17 @@ public class PlayerMovement : MonoBehaviour
             if (movementInput != Vector3.zero)
             {
                 // Move Player
+                isWalking = true;
                 RigidBody.AddForce(movementInput * Acceleration, ForceMode.Force);
                 // clamp speed to maxspeed
                 if (RigidBody.velocity.magnitude > MaxSpeed) RigidBody.velocity = RigidBody.velocity.normalized * MaxSpeed;
                 // Align player to face the direction of movement
                 RigidBody.rotation = Quaternion.LookRotation(movementInput);
-                HandleStepSound();
             } else
             {
                 // if no input is given, decelerate
                 RigidBody.AddForce(RigidBody.velocity * -Deceleration, ForceMode.Force);
+                isWalking = false;
             } 
         }
              
@@ -69,14 +73,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleStepSound()
     {
-        if (!isDown) // Check again to prevent any sounds from being emitted if down
+        if (!isDown && isWalking) // Check again to prevent any sounds from being emitted if down
         {
-            stepSoundTimer += Time.deltaTime; //Only allow a certain number of StepSounds per second
-            if (stepSoundTimer >= stepSoundInterval)
-            {
-                soundManager.EmitSound(SoundType.Step);
-                stepSoundTimer = 0f; // Reset timer
-            }
+            soundManager.EmitSound(SoundType.Step);
         }
     }
 
