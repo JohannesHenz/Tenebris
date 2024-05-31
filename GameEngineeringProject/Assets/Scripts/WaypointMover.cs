@@ -11,14 +11,14 @@ public class WaypointMover : MonoBehaviour
 
     private Transform currentWaypoint = null;
 
-    public float distanceThreshold = 1.9f;
+    public float distanceThreshold = 1f;
 
     private void Update()
     {
 
 
         // If object is close enough to destination than choose the next one
-        if (agent.remainingDistance <= distanceThreshold && GetComponent<MonsterController>().currentState == State.Roaming)
+        if (GetComponent<MonsterController>().currentState == State.Roaming && agent.remainingDistance <= distanceThreshold)
         {
             // Set the next waypoint target
             currentWaypoint = waypoints.GetRandomWaypoint(currentWaypoint);

@@ -12,11 +12,12 @@ public class MonsterController : MonoBehaviour
     private float roamingSpeed = 4.5f;
     private float chasingCheckoutSpeed = 6.0f;
     private GameObject target;
-    private float hearingRadius = 15.0f;
+     public SphereCollider hearingCollider; 
     [SerializeField] public State currentState;
 
     //Layer that count as obstacle
     public LayerMask obstacleLayer;
+    private float checkingValidPathTimer = 2.0f;
 
 
     // Start is called before the first frame update
@@ -45,7 +46,7 @@ public class MonsterController : MonoBehaviour
             ReturnRoaming();
         }
         // Monster is retreates to lates waypoint if player is to far away
-        else if (currentState == State.Chasing && agent.remainingDistance > hearingRadius)
+        else if (currentState == State.Chasing && agent.remainingDistance > hearingCollider.radius)
         {
             Debug.Log("Monster is bored");
             ReturnRoaming();
@@ -57,8 +58,8 @@ public class MonsterController : MonoBehaviour
             {
                 TrySetDestination(target.GetComponent<Transform>().position);
                 //agent.SetDestination();
-            }
-            
+                Debug.Log("chase");
+            }            
         }
 
         // *******************************************
@@ -75,18 +76,23 @@ public class MonsterController : MonoBehaviour
         if (other.gameObject.CompareTag("NoiseMaker"))
         {
             // First priority is the Noice Maker to leave player option to distract monster
-            TrySetDestination(other.gameObject.GetComponent<Transform>().position);
-            //agent.SetDestination();
-            currentState = State.Checkout;
-            agent.speed = chasingCheckoutSpeed;
+            if (TrySetDestination(other.gameObject.GetComponent<Transform>().position))
+            {
+                //agent.SetDestination();
+                currentState = State.Checkout;
+                agent.speed = chasingCheckoutSpeed;
+            }
+            
         }
         else if (other.gameObject.CompareTag("TaskSound") && currentState != State.Checkout)
         {
             //Second Priority are Tasks - monster wants to check them out and destroy them
-            TrySetDestination(other.gameObject.GetComponent<Transform>().position);
-            //agent.SetDestination();
-            currentState = State.Checkout;
-            agent.speed = chasingCheckoutSpeed;
+            if (TrySetDestination(other.gameObject.GetComponent<Transform>().position))
+            {
+                //agent.SetDestination();
+                currentState = State.Checkout;
+                agent.speed = chasingCheckoutSpeed;
+            }
         }
         else if (other.gameObject.CompareTag("StepSound") && currentState != State.Checkout)
         {
@@ -138,36 +144,71 @@ public class MonsterController : MonoBehaviour
     }
 
     //Calculates if set Destination is even possible
-    public void TrySetDestination(Vector3 destination )
+    public bool TrySetDestination(Vector3 destination )
     {
         NavMeshPath path = new NavMeshPath();
         agent.CalculatePath(destination, path);
 
-        if (path.status == NavMeshPathStatus.PathComplete && !IsPathObstructed(path))
+        if (path.status == NavMeshPathStatus.PathComplete && CheckPathForehandIfWalkable(path))
         {
+            //Check if Path is still valid while opening and closing doors
+            StartCoroutine(IsPathObstructed(path));
+
             agent.SetDestination(destination);
+
+            return true;
             //Debug.Log("Valid path set");
-        }/*
+        }
         else
         {
-            Debug.Log("Invalid path set");
-        }*/
+            //Debug.Log("Invalid path set");
+            return false;
+        }
     }
 
+    //Currently not able to solve problem diffrently
+    private bool CheckPathForehandIfWalkable(NavMeshPath path){
+        for (int i = 0; i < path.corners.Length - 1; i++)
+        {
+            Vector3 start = path.corners[i];
+            Vector3 end = path.corners[i + 1];
+
+            if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
+            {
+                //Path blocked by something / Monster returns roaming;
+                Debug.Log("Break current path");
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+
     //Checks if Obstacle is on the given path which makes it impossible to reach destination
-    bool IsPathObstructed(NavMeshPath path)
+    IEnumerator IsPathObstructed(NavMeshPath path)
     {
         for (int i = 0; i < path.corners.Length - 1; i++)
         {
             Vector3 start = path.corners[i];
             Vector3 end = path.corners[i + 1];
+
+            yield return new WaitForSeconds(checkingValidPathTimer);
+
             if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
             {
-                //Debug.Log("Path blocked " + hit.collider.name);
-                return true;
+                //Path blocked by something / Monster returns roaming;
+                Debug.Log("Break current path");
+
+                StopCoroutine(IsPathObstructed(path));
+                ReturnRoaming();
+
+                yield break;
             }
         }
-        return false;
+        
     }
 
 
