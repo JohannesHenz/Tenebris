@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 4661595781184359803}
   - component: {fileID: 3503537984379223149}
   m_Layer: 0
-  m_Name: SoundEffect
+  m_Name: HissingAirSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -258,6 +258,7 @@ MonoBehaviour:
   _uiInteractable: {fileID: 3135261592253961073}
   HeldItem: 
   Deactivated: 0
+  Sound: {fileID: 8300000, guid: b6449cf59646c424aad76639e0cda61f, type: 3}
 --- !u!136 &-3971500323664028036
 CapsuleCollider:
   m_ObjectHideFlags: 0
