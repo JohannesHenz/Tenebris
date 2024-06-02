@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private float stepSoundInterval = 0.5f;
     private bool isWalking = false;
 
+    public AudioClip StepSound;
+
     //private enum SoundType { Task, Step, NoiseMaker };
 
     void Start()
@@ -76,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isDown && isWalking) // Check again to prevent any sounds from being emitted if down
         {
             soundManager.EmitSound(SoundType.Step);
+            AudioSource.PlayClipAtPoint(StepSound, transform.position, 0.5f);
         }
     }
 
