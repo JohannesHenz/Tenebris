@@ -11,7 +11,6 @@ public class LightsFlicker : MonoBehaviour
 
     float defaultIntensity;
     bool isOn;
-    float timer;
     float delay;
 
     private void Start()
@@ -35,9 +34,5 @@ public class LightsFlicker : MonoBehaviour
             myLight.intensity = 0;
             delay = UnityEngine.Random.Range(0, maxFlicker);
         }
-
-        timer = 0;
     }
-
-
 }

@@ -24,9 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MaxSpeed = 5.0f;
     private Rigidbody RigidBody;
 
-    private Renderer renderer;
+    private Renderer _re;
     private Vector3 movementInput;
-    private float stepSoundTimer = 0f;
     private float stepSoundInterval = 0.5f;
     private bool isWalking = false;
 
@@ -39,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         // Get the necessary Components
         soundManager = GetComponent<SoundManager>();
         //rb = GetComponent<Rigidbody>();
-        renderer = GetComponent<Renderer>();
+        _re = GetComponent<Renderer>();
         RigidBody = GetComponent<Rigidbody>();
 
         InvokeRepeating("HandleStepSound", 0f, stepSoundInterval);
@@ -93,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         gameObject.GetComponent<Interacter>().Deactivated = true;
         reviveCollider.SetActive(true);
         isDown = true;
-        renderer.material = downedMaterial;  // Change the material to the downed state
+        _re.material = downedMaterial;  // Change the material to the downed state
     }
 
     // Method to revive the player
@@ -107,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.GetComponent<Interacter>().Deactivated = false;
             isDown = false;
-            renderer.material = normalMaterial;  // Revert the material to the normal state
+            _re.material = normalMaterial;  // Revert the material to the normal state
             reviveCollider.SetActive(false);
         }
     }
