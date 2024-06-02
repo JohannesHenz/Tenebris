@@ -390,12 +390,59 @@ Transform:
   m_LocalScale: {x: 0.1, y: 2.7500768, z: 2.0001323}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6905652418787323228}
   - {fileID: 1752053845244961757}
   - {fileID: 9170500405467210943}
   - {fileID: 1184729022269419766}
   - {fileID: 758068492687948229}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8447649022180419912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6905652418787323228}
+  - component: {fileID: 1273126658198815143}
+  m_Layer: 0
+  m_Name: DoorSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6905652418787323228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447649022180419912}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1238320353833343909}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1273126658198815143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447649022180419912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01270e465f6d65449a809c2d80d19a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 8300000, guid: 779f29cf69b00b941b5f254f12487fac, type: 3}
+  Volume: 0.5
 --- !u!1001 &1243630242519843656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -412,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 784638679826985553, guid: d4e3a6f9a3cd93d438687289f5ab781a,
         type: 3}
       propertyPath: Targets.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 784638679826985553, guid: d4e3a6f9a3cd93d438687289f5ab781a,
         type: 3}
@@ -429,6 +476,11 @@ PrefabInstance:
       propertyPath: Targets.Array.data[1]
       value: 
       objectReference: {fileID: 2533279569277033074}
+    - target: {fileID: 784638679826985553, guid: d4e3a6f9a3cd93d438687289f5ab781a,
+        type: 3}
+      propertyPath: Targets.Array.data[2]
+      value: 
+      objectReference: {fileID: 8447649022180419912}
     - target: {fileID: 1777294633943459957, guid: d4e3a6f9a3cd93d438687289f5ab781a,
         type: 3}
       propertyPath: m_Name
