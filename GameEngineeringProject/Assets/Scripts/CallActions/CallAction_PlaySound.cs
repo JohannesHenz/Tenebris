@@ -16,7 +16,7 @@ public class CallAction_PlaySound : MonoBehaviour, ICallAction
         }
         else
         {
-            Invoke("Playsound", 0.0f);
+            Invoke("PlaySound", 0.0f);
         }
         return true;
     }
