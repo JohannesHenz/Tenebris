@@ -3043,6 +3043,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2717773317536728821, guid: 4693d13031abbe24e8ba8a6033e6945d,
         type: 3}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_MaxPlayerCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3475643668670339728, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}
       propertyPath: m_Name
