@@ -57,9 +57,17 @@ public class MonsterController : MonoBehaviour
         {
             if(target != null)
             {
-                TrySetDestination(target.GetComponent<Transform>().position);
-                //agent.SetDestination();
-                Debug.Log("chase");
+                if (!TrySetDestination(target.GetComponent<Transform>().position))
+                {
+                    currentState = State.Roaming;
+                    agent.speed = roamingSpeed;
+
+                }
+                else
+                {
+                    Debug.Log("chase target");
+                }
+                
             }            
         }
 
@@ -79,7 +87,6 @@ public class MonsterController : MonoBehaviour
             // First priority is the Noice Maker to leave player option to distract monster
             if (TrySetDestination(other.gameObject.GetComponent<Transform>().position))
             {
-                //agent.SetDestination();
                 currentState = State.Checkout;
                 //Increases Speed
                 agent.speed = checkoutNoiceMakerSpeed;
@@ -98,7 +105,6 @@ public class MonsterController : MonoBehaviour
             //Third Priority are Tasks - monster wants to check them out and destroy them
             if (TrySetDestination(other.gameObject.GetComponent<Transform>().position))
             {
-                //agent.SetDestination();
                 currentState = State.Checkout;
 
                 //Don't increase speed because tasks are not as important as killing humans XD
@@ -144,7 +150,7 @@ public class MonsterController : MonoBehaviour
 
     private void ReturnRoaming()
     {
-        agent.ResetPath();
+        //agent.ResetPath();
         currentState = State.Roaming;
         agent.speed = roamingSpeed;
     }
@@ -162,12 +168,13 @@ public class MonsterController : MonoBehaviour
 
             agent.SetDestination(destination);
 
+            Debug.Log("Valid path set");
             return true;
-            //Debug.Log("Valid path set");
         }
         else
         {
-            //Debug.Log("Invalid path set");
+            agent.ResetPath();
+            Debug.Log("Invalid path set");
             return false;
         }
     }
@@ -182,7 +189,7 @@ public class MonsterController : MonoBehaviour
             if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
             {
                 //Path blocked by something / Monster returns roaming;
-                Debug.Log("Break current path");
+                Debug.Log("First Check invalid");
 
                 return false;
             }
@@ -206,7 +213,7 @@ public class MonsterController : MonoBehaviour
             if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
             {
                 //Path blocked by something / Monster returns roaming;
-                Debug.Log("Break current path");
+                Debug.Log("Coroutine In valid Path");
 
                 StopCoroutine(IsPathObstructed(path));
                 ReturnRoaming();
@@ -216,7 +223,5 @@ public class MonsterController : MonoBehaviour
         }
         
     }
-
-
 
 }

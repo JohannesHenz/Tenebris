@@ -18,7 +18,7 @@ public class WaypointMover : MonoBehaviour
 
 
         // If object is close enough to destination than choose the next one
-        if (GetComponent<MonsterController>().currentState == State.Roaming && agent.remainingDistance <= distanceThreshold)
+        if (GetComponent<MonsterController>().currentState == State.Roaming && (agent.remainingDistance <= distanceThreshold || !agent.hasPath))
         {
             // Set the next waypoint target
             currentWaypoint = waypoints.GetRandomWaypoint(currentWaypoint);
@@ -27,7 +27,7 @@ public class WaypointMover : MonoBehaviour
     }
 
 
-    //Start to roam around
+    //At the Start to roam around or if Agent get locked it should be able reposition itself
     public void StartRoaming()
     {
         // Set position to start waypoint
@@ -43,6 +43,6 @@ public class WaypointMover : MonoBehaviour
     {
         // Move Object along the path
         GetComponent<MonsterController>().TrySetDestination(currentWaypoint.position);
-        //agent.SetDestination(currentWaypoint.position);
     }
+
 }
