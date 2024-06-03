@@ -10,7 +10,8 @@ public class MonsterController : MonoBehaviour
     // Variables 
     public NavMeshAgent agent;
     private float roamingSpeed = 4.5f;
-    private float chasingCheckoutSpeed = 6.0f;
+    private float chasingSpeed = 6.0f;
+    private float checkoutNoiceMakerSpeed = 5.5f;
     private GameObject target;
      public SphereCollider hearingCollider; 
     [SerializeField] public State currentState;
@@ -80,27 +81,32 @@ public class MonsterController : MonoBehaviour
             {
                 //agent.SetDestination();
                 currentState = State.Checkout;
-                agent.speed = chasingCheckoutSpeed;
+                //Increases Speed
+                agent.speed = checkoutNoiceMakerSpeed;
             }
             
         }
-        else if (other.gameObject.CompareTag("TaskSound") && currentState != State.Checkout)
+        else if (other.gameObject.CompareTag("StepSound") && agent.speed != checkoutNoiceMakerSpeed)
         {
-            //Second Priority are Tasks - monster wants to check them out and destroy them
+            //Second Priority are steps 
+            currentState = State.Chasing;
+            agent.speed = chasingSpeed;
+            target = other.gameObject;
+        }
+        else if (other.gameObject.CompareTag("TaskSound") && currentState != State.Checkout && currentState != State.Chasing)
+        {
+            //Third Priority are Tasks - monster wants to check them out and destroy them
             if (TrySetDestination(other.gameObject.GetComponent<Transform>().position))
             {
                 //agent.SetDestination();
                 currentState = State.Checkout;
-                agent.speed = chasingCheckoutSpeed;
+
+                //Don't increase speed because tasks are not as important as killing humans XD
+                //Additionally we can use that to distinguish btw priorities
+                
             }
         }
-        else if (other.gameObject.CompareTag("StepSound") && currentState != State.Checkout)
-        {
-            //Third Priority are steps - due to the fact that the monster is blind and steps aren't very loud
-            currentState = State.Chasing;
-            agent.speed = chasingCheckoutSpeed;
-            target = other.gameObject;
-        }
+        
 
         // Cecks if it collides with something breakable
         if (other.gameObject.CompareTag("Breakable"))
