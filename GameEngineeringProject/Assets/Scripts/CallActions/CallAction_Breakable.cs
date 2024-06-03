@@ -10,12 +10,17 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     [SerializeField] private UI_Interactable _uiInteractable;
     public Sprite SpriteInput; // its a hack
 
+    //Every Breakable could have an individual impact on the oxygen timer
+    public float oxygenLeakWeight = 1;
+    private Timer OxygenTimer;
+
     public bool isDestroyed = false;
 
     private void Start()
     {
         InteractableObject.SetActive(false);
         _uiInteractable.Close();
+        OxygenTimer = GameObject.Find("GameManager").GetComponent<Timer>();
     }
 
     public bool CallAction(GameObject sender)
@@ -34,6 +39,8 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     public void BreakObject()
     {
         // *** play breaking Sound ***
+        
+        OxygenTimer.increaseTimerSpeed(oxygenLeakWeight);
 
         isDestroyed = true;
         InteractableObject.SetActive(true);
@@ -46,6 +53,8 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     public void RepairObject()
     {
         // *** play repairing Sound ?  ***
+
+        OxygenTimer.decreaseTimerSpeed(oxygenLeakWeight);
 
         isDestroyed = false;
         InteractableObject.SetActive(false);

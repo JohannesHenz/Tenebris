@@ -340,6 +340,7 @@ MonoBehaviour:
   EffectsObject: {fileID: 8882735478503506216}
   _uiInteractable: {fileID: 6291702561871982559}
   SpriteInput: {fileID: 21300000, guid: b5612abce1006e749a12e5b378df203a, type: 3}
+  oxygenLeakWeight: 0.5
   isDestroyed: 0
 --- !u!1 &3343390697729912105
 GameObject:

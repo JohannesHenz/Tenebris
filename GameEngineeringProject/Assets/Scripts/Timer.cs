@@ -30,7 +30,12 @@ public class Timer : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeLeft / 60f);
         int seconds = Mathf.FloorToInt(timeLeft - minutes * 60f);
 
-        string textTime = string.Format("{00:00}:{01:00}", minutes, seconds);
+        string textTime = string.Format("{0:D2}:{1:D2}", minutes, seconds);
+
+        // Just a thought
+        string timeMultiplyer = " (x" + timerSpeed + ")";
+        textTime += timeMultiplyer;
+        //
 
         if (timeLeft <= 0)
         {
@@ -59,11 +64,26 @@ public class Timer : MonoBehaviour
         timerSpeed = 1;
     }
 
-    public void setTimerSpeed(float value)
+    public void increaseTimerSpeed(float amount)
     {
-        if (value >= 0)
+        if (amount > 0)
         {
-            timerSpeed = value;
+            timerSpeed += amount;
         }
     }
+
+
+    public void decreaseTimerSpeed(float amount)
+    {
+        if (amount > 0)
+        {
+            timerSpeed -= amount;
+
+            if (timerSpeed < 1)
+            {
+                timerSpeed = 1;
+            }
+        }
+    }
+
 }
