@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
+
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -24,22 +28,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MaxSpeed = 5.0f;
     private Rigidbody RigidBody;
 
+    private CharacterController controller;
     private Renderer _re;
-    private Vector3 movementInput;
+    private Vector3 movementInput = Vector3.zero;
     private float stepSoundInterval = 0.5f;
     private bool isWalking = false;
 
     public AudioClip StepSound;
+    private Interacter interacter;
 
-    //private enum SoundType { Task, Step, NoiseMaker };
+
 
     void Start()
     {
+        controller = gameObject.GetComponent<CharacterController>();
         // Get the necessary Components
         soundManager = GetComponent<SoundManager>();
         //rb = GetComponent<Rigidbody>();
         _re = GetComponent<Renderer>();
         RigidBody = GetComponent<Rigidbody>();
+        interacter = GetComponent<Interacter>();
 
         InvokeRepeating("HandleStepSound", 0f, stepSoundInterval);
     }
@@ -48,28 +56,62 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDown) //Don't Move or Make StepSound if player is down
         {
-            movementInput = new Vector3(Input.GetAxis(horizontalInputAxis), 0, Input.GetAxis(verticalInputAxis)).normalized;
+            //movementInput = new Vector3(Input.GetAxis(horizontalInputAxis), 0, Input.GetAxis(verticalInputAxis)).normalized;
+            
             if (movementInput != Vector3.zero)
             {
                 // Move Player
                 isWalking = true;
                 RigidBody.AddForce(movementInput * Acceleration, ForceMode.Force);
                 // clamp speed to maxspeed
-                if (RigidBody.velocity.magnitude > MaxSpeed) RigidBody.velocity = RigidBody.velocity.normalized * MaxSpeed;
+                if (RigidBody.velocity.magnitude > MaxSpeed)
+                {
+                    RigidBody.velocity = RigidBody.velocity.normalized * MaxSpeed;
+                }
                 // Align player to face the direction of movement
                 RigidBody.rotation = Quaternion.LookRotation(movementInput);
             } else
             {
                 // if no input is given, decelerate
-                RigidBody.AddForce(RigidBody.velocity * -Deceleration, ForceMode.Force);
+
+                //RigidBody.AddForce(RigidBody.velocity * -Deceleration, ForceMode.Force);
+                RigidBody.velocity = Vector3.Lerp(RigidBody.velocity, Vector3.zero, Deceleration * Time.fixedDeltaTime);
                 isWalking = false;
             } 
+            
         }
-             
-        if (Input.GetButtonDown(soundButton)) //NoisMakerSound 
+          
+
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        Vector2 input = context.ReadValue<Vector2>();
+        movementInput = new Vector3(input.x, 0, input.y).normalized;
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
-            soundManager.EmitSound(SoundType.NoiseMaker);  
-        }        
+
+            if (interacter != null)
+            {
+                interacter.HandleInteract();
+            }
+
+        }
+    }
+
+    public void OnNoiseMaker(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+
+
+            soundManager.EmitSound(SoundType.NoiseMaker);
+        }
+
     }
 
     private void HandleStepSound()

@@ -39,11 +39,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8458816593309764036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4e662d1b3980354d89d1062bf70b0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2717773317536728821, guid: 4693d13031abbe24e8ba8a6033e6945d,
     type: 3}
-  spawnerObject: {fileID: 8458816593309764036}

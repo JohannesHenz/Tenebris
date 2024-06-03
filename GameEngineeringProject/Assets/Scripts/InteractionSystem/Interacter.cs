@@ -55,17 +55,7 @@ public class Interacter : MonoBehaviour
             {
                 if (!_uiInteractable.IsDisplayed) _uiInteractable.SetUp(_Interactable.DisplayedInteractIcon); // does all the setup for ui display no action yet
 
-                if (Input.GetButtonDown(interactButton) && !InputBlocked)
-                {
-                    AudioSource.PlayClipAtPoint(Sound, transform.position, 0.2f);
-                    InputBlocked = true;
-                    _Interactable.Interact(this);
-                    /// Added by Johannes for the TaskSound
-                    soundManager.EmitSound(SoundType.Task);
-                    /// 
-                    // start cooldown coroutine
-                    Invoke("UnblockInput", InputDelay);
-                }
+                
             }
         } else
         {
@@ -75,6 +65,8 @@ public class Interacter : MonoBehaviour
 
         }
     }
+
+
 
     private void OnDrawGizmos()
     {
@@ -87,4 +79,19 @@ public class Interacter : MonoBehaviour
         InputBlocked = false;
     }
 
-}
+    public void HandleInteract()
+    {
+        if (!Deactivated && _Interactable != null && !InputBlocked)
+        {
+            AudioSource.PlayClipAtPoint(Sound, transform.position, 0.2f);
+            InputBlocked = true;
+            _Interactable.Interact(this);
+            /// Added by Johannes for the TaskSound
+            soundManager.EmitSound(SoundType.Task);
+            /// 
+            // start cooldown coroutine
+            Invoke("UnblockInput", InputDelay);
+        }
+    }
+
+    }
