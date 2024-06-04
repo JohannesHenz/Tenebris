@@ -25,4 +25,13 @@ public class CallAction_PlaySound : MonoBehaviour, ICallAction
     {
         AudioSource.PlayClipAtPoint(Sound, transform.position, Volume);
     }
+
+
+
+    //Funktioniert noch nicht
+    public void StopSound()
+    {
+        CancelInvoke("PlaySound");
+
+    }
 }

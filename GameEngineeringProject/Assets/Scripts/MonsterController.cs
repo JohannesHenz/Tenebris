@@ -12,7 +12,7 @@ public class MonsterController : MonoBehaviour
     private float roamingSpeed = 4.5f;
     private float chasingSpeed = 6.0f;
     private float checkoutNoiceMakerSpeed = 5.5f;
-    private GameObject target;
+    private Vector3 target;
      public SphereCollider hearingCollider; 
     [SerializeField] public State currentState;
 
@@ -55,20 +55,18 @@ public class MonsterController : MonoBehaviour
         // If player is in hearing range - chase the player
         else if (currentState == State.Chasing)
         {
-            if(target != null)
+            //When Player could escape  or path is not possible return Roaming
+            if (!TrySetDestination(target) || (gameObject.transform.position.x == target.x && gameObject.transform.position.z == target.z))
             {
-                if (!TrySetDestination(target.GetComponent<Transform>().position))
-                {
-                    currentState = State.Roaming;
-                    agent.speed = roamingSpeed;
+                Debug.Log("GOO fucking roaming");
+                ReturnRoaming();
 
-                }
-                else
-                {
-                    Debug.Log("chase target");
-                }
-                
-            }            
+            }
+            else
+            {
+                Debug.Log("chase target");
+            }
+  
         }
 
         // *******************************************
@@ -98,7 +96,7 @@ public class MonsterController : MonoBehaviour
             //Second Priority are steps 
             currentState = State.Chasing;
             agent.speed = chasingSpeed;
-            target = other.gameObject;
+            target = other.gameObject.transform.position;
         }
         else if (other.gameObject.CompareTag("TaskSound") && currentState != State.Checkout && currentState != State.Chasing)
         {
@@ -168,13 +166,13 @@ public class MonsterController : MonoBehaviour
 
             agent.SetDestination(destination);
 
-            Debug.Log("Valid path set");
+            //Debug.Log("Valid path set");
             return true;
         }
         else
         {
             agent.ResetPath();
-            Debug.Log("Invalid path set");
+            //Debug.Log("Invalid path set");
             return false;
         }
     }
@@ -189,7 +187,7 @@ public class MonsterController : MonoBehaviour
             if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
             {
                 //Path blocked by something / Monster returns roaming;
-                Debug.Log("First Check invalid");
+                //Debug.Log("First Check invalid");
 
                 return false;
             }
@@ -213,7 +211,7 @@ public class MonsterController : MonoBehaviour
             if (Physics.Raycast(start, (end - start).normalized, out RaycastHit hit, Vector3.Distance(start, end), obstacleLayer))
             {
                 //Path blocked by something / Monster returns roaming;
-                Debug.Log("Coroutine In valid Path");
+                //Debug.Log("Coroutine In valid Path");
 
                 StopCoroutine(IsPathObstructed(path));
                 ReturnRoaming();

@@ -18,6 +18,7 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
 
     private void Start()
     {
+        
         InteractableObject.SetActive(false);
         _uiInteractable.Close();
         OxygenTimer = GameObject.Find("GameManager").GetComponent<Timer>();
@@ -52,7 +53,8 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
 
     public void RepairObject()
     {
-        // *** play repairing Sound ?  ***
+        // *** play repairing Sound && and stop Oxygen Leaking Sound  ***
+        //EffectsObject.transform.Find("HissingAirSound").GetComponent<CallAction_PlaySound>().StopSound();
 
         OxygenTimer.decreaseTimerSpeed(oxygenLeakWeight);
 
