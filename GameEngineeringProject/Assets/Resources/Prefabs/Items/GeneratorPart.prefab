@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Prompt: 
+  _InteractIcon: {fileID: 21300000, guid: 9ae9353704b7a2a488ea306e118fa288, type: 3}
