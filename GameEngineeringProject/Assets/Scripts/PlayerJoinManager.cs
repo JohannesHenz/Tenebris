@@ -32,6 +32,15 @@ public class PlayerJoinManager : MonoBehaviour
         playerInput.gameObject.name = "Player" + (spawnedPlayers.Count + 1);
 
         spawnedPlayers.Add(playerInput.gameObject);
+        
+        if (spawnedPlayers.Count == 2)
+        {
+            DeathChecker deathChecker = GameObject.Find("GameManager").GetComponent<DeathChecker>();
+            deathChecker.FindPlayers();
+
+        }
+        
+        Debug.Log("Player " + spawnedPlayers.Count + " added");
     }
 
     public void ManualJoinPlayer()
@@ -39,6 +48,7 @@ public class PlayerJoinManager : MonoBehaviour
         if (spawnedPlayers.Count < 2)  // Adjust the condition based on your max player count
         {
             // Manually join the player
+            Debug.Log("Adding new Player manually");
             int nextPlayerIndex = PlayerInputManager.instance.playerCount;
             PlayerInputManager.instance.JoinPlayer(playerIndex: nextPlayerIndex, controlScheme: "Keyboard&Mouse");
         }

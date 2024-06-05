@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioClip StepSound;
     private Interacter interacter;
+   
+
+    public event Action<PlayerMovement> OnPlayerDown;
 
     public GameObject playerPrefab; //Zum Spawnen
 
@@ -156,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
         reviveCollider.SetActive(true);
         isDown = true;
         _re.material = downedMaterial;  // Change the material to the downed state
+        NotifyDeathChecker(); //Checkt ob Bedingungen erfüllt sind um den Death Screen zu laden
     }
 
     // Method to revive the player
@@ -177,6 +182,14 @@ public class PlayerMovement : MonoBehaviour
     public bool getIsDown()
     {
         return isDown;
+    }
+
+    private void NotifyDeathChecker()
+    {
+        DeathChecker deathChecker = FindObjectOfType<DeathChecker>();
+        
+            deathChecker.CheckPlayersStatus();
+        
     }
 
 }
