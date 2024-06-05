@@ -88,6 +88,7 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                     //----------- Delete Item in UI -------------
                     Debug.Log("If Blank item is not  working look in Interactable_Conditioned");
                     path = "Prefabs/Icons/ItemBlank";
+                    Debug.Log("It is: " + interacter.getName());
 
                     if (interacter.getName() == "Player1")
                     {
