@@ -8,6 +8,7 @@ public class DeathChecker : MonoBehaviour
 {
     private GameObject Player1;
     private GameObject Player2;
+    public bool OxygenTimerRanOut;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class DeathChecker : MonoBehaviour
 
     public void CheckPlayersStatus()
     {
-        if ((Player1.GetComponent<PlayerMovement>().getIsDown() && Player2.GetComponent<PlayerMovement>().getIsDown()))
+        if (OxygenTimerRanOut == true || (Player1.GetComponent<PlayerMovement>().getIsDown() && Player2.GetComponent<PlayerMovement>().getIsDown()))
         {
             SceneManager.LoadScene("DeathScreen");
         }
@@ -37,4 +38,6 @@ public class DeathChecker : MonoBehaviour
         Debug.Log("Player2 Found");
 
     }
+
+
 }

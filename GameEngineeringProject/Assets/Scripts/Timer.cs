@@ -41,6 +41,7 @@ public class Timer : MonoBehaviour
         if (timeLeft <= 0)
         {
             stopTimer = true;
+            TimerRanOut();
         }
 
         if (stopTimer == false)
@@ -92,16 +93,13 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public bool IsTimerRunOut()
+    public void TimerRanOut()
     {
-        if (timeLeft <= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        
+            DeathChecker deathChecker = GameObject.Find("GameManager").GetComponent<DeathChecker>();
+            deathChecker.OxygenTimerRanOut = true;
+              deathChecker.CheckPlayersStatus();
+       
     }
 
 }
