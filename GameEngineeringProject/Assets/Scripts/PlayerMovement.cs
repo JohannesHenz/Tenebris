@@ -32,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private Renderer _re;
     private Vector3 movementInput = Vector3.zero;
-    private float stepSoundInterval = 0.5f;
+    private float stepSoundInterval = 1.0f;
     private bool isWalking = false;
 
-    public AudioClip StepSound;
+    private AudioSource StepSound;
     private Interacter interacter;
    
 
@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         _re = GetComponent<Renderer>();
         RigidBody = GetComponent<Rigidbody>();
         interacter = GetComponent<Interacter>();
+        StepSound = GetComponent<AudioSource>();
 
         InvokeRepeating("HandleStepSound", 0f, stepSoundInterval);
     }
@@ -143,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isDown && isWalking) // Check again to prevent any sounds from being emitted if down
         {
             soundManager.EmitSound(SoundType.Step);
-            AudioSource.PlayClipAtPoint(StepSound, transform.position, 0.5f);
+            StepSound.Play();
         }
     }
 

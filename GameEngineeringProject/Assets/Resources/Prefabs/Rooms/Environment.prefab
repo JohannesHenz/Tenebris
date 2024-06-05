@@ -5579,7 +5579,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5851684982322946974}
     - target: {fileID: 8264937731233111456, guid: e6f4c157cfec304499f931ce68f996d6,
         type: 3}
       propertyPath: m_Color.b
@@ -5693,6 +5693,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3433c44fed3054e48b26aebd67fb7bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5851684982322946974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4102240062297793890, guid: e6f4c157cfec304499f931ce68f996d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7627771649369704188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5951209475726167681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4273274593090914429, guid: e6f4c157cfec304499f931ce68f996d6,
