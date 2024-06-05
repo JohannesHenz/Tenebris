@@ -227,6 +227,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d84e4296-b3e4-4f6b-a1a5-99148f320d07
     m_ActionName: Player/NoiseMaker[/Keyboard/q,/DualShock4GamepadHID/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3afbd266-6585-4cc2-a288-03294280cc1b
+    m_ActionName: Player/Spawn[/DualShock4GamepadHID/start,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -328,6 +332,7 @@ MonoBehaviour:
   Deceleration: 70
   MaxSpeed: 4
   StepSound: {fileID: 8300000, guid: 2c71b32d2804b2d48aac86f955ab3266, type: 3}
+  playerPrefab: {fileID: 2717773317536728821}
 --- !u!114 &-2299261887808369339
 MonoBehaviour:
   m_ObjectHideFlags: 0

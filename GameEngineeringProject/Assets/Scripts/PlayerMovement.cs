@@ -8,7 +8,7 @@ using UnityEngine.Windows;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-
+    public static List<GameObject> instantiatedPlayers = new List<GameObject>(); // List der Instanzierten Players
 
     public bool isDown = false;  // Track whether the player is incapacitated
     public string horizontalInputAxis = "Horizontal";
@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioClip StepSound;
     private Interacter interacter;
+
+    public GameObject playerPrefab; //Zum Spawnen
 
 
 
@@ -110,6 +112,25 @@ public class PlayerMovement : MonoBehaviour
 
 
             soundManager.EmitSound(SoundType.NoiseMaker);
+        }
+
+    }
+
+    public void OnSpawn (InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (instantiatedPlayers.Count < 2)
+            {
+                Vector3 spawnPosition = new Vector3(-6.75f, 0.5f, 17.75f); // Define your spawn position here
+                GameObject newPlayer = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+                newPlayer.name = "Player" + (instantiatedPlayers.Count + 1);
+                instantiatedPlayers.Add(newPlayer);
+            }
+            else
+            {
+                Debug.Log("Max Player Count Reached!");
+            }
         }
 
     }

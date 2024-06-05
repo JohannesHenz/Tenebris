@@ -28,4 +28,9 @@ public class PlayerSpawner : MonoBehaviour
         playerInput.gameObject.transform.position = spawnPosition;
         spawnedPlayers.Add(playerInput.gameObject);
     }
+
+    void JoinPlayer()
+    {
+
+    }
 }

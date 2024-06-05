@@ -1862,6 +1862,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8458816593309764036, guid: f5a46451024c37f4c8b7b7cbfc55c448,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1613412357465796700, guid: f5a46451024c37f4c8b7b7cbfc55c448, type: 3}
     m_RemovedGameObjects: []
@@ -2995,6 +3000,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947978728}
   m_CullTransparentMesh: 1
+--- !u!1 &2036889467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3475643668670339728, guid: a73c887916b49f5488f57dbe1145e712,
+    type: 3}
+  m_PrefabInstance: {fileID: 8180421934349106236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2036889470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036889467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6523650a9f84d445b7cdcaf0c131a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 2717773317536728821, guid: 4693d13031abbe24e8ba8a6033e6945d,
+    type: 3}
 --- !u!1 &2064731910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,6 +3205,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
       propertyPath: m_PlayerPrefab
       value: 
       objectReference: {fileID: 2717773317536728821, guid: 4693d13031abbe24e8ba8a6033e6945d,
@@ -3187,7 +3222,92 @@ PrefabInstance:
     - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}
       propertyPath: m_MaxPlayerCount
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_UseReference
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Name
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e1381c30-ca51-43d4-8200-695401f732d6
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 54a0adfd-4caa-4f68-916a-c64a61888167
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/start
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/space
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2036889470}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Join
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ManualJoinPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerJoinManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 818341838647702704, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3475643668670339728, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}
@@ -3247,7 +3367,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3475643668670339728, guid: a73c887916b49f5488f57dbe1145e712,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2036889470}
   m_SourcePrefab: {fileID: 100100000, guid: a73c887916b49f5488f57dbe1145e712, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
