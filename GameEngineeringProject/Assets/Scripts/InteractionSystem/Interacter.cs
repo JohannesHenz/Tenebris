@@ -28,7 +28,7 @@ public class Interacter : MonoBehaviour
     private bool InputBlocked = false;
     private float InputDelay = 1.0f;
 
-    public AudioClip Sound = null;
+    public AudioSource InteractSound = null;
 
     /// Added by Johannes for the TaskSound
     private SoundManager soundManager;  // Reference to the SoundManager
@@ -83,7 +83,7 @@ public class Interacter : MonoBehaviour
     {
         if (!Deactivated && _Interactable != null && !InputBlocked)
         {
-            AudioSource.PlayClipAtPoint(Sound, transform.position, 0.2f);
+            InteractSound.Play();
             InputBlocked = true;
             _Interactable.Interact(this);
             /// Added by Johannes for the TaskSound

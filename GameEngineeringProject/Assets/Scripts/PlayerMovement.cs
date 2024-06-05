@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private Renderer _re;
     private Vector3 movementInput = Vector3.zero;
-    private float stepSoundInterval = 1.0f;
+    private float stepSoundInterval = 0.8f;
     private bool isWalking = false;
 
     private AudioSource StepSound;
