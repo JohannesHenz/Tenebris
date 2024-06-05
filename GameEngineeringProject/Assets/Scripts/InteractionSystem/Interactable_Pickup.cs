@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interactable_Pickup : MonoBehaviour, IInteractable
 {
@@ -36,7 +37,7 @@ public class Interactable_Pickup : MonoBehaviour, IInteractable
 
             Destroy(gameObject);
 
-            return false;
+            
         }
         else
         {
@@ -45,8 +46,28 @@ public class Interactable_Pickup : MonoBehaviour, IInteractable
 
             Destroy(gameObject);
 
-            return true;
         }
+
+
+        //----------- Change Item in UI -------------
+        if (interacter.getName() == "Player1")
+        {
+            Image itemframeImage = GameObject.Find("Player1_UI").transform.Find("Item").GetComponent<Image>();
+            itemframeImage.sprite = _InteractIcon;
+            }
+        else if (interacter.getName() == "Player2")
+        {
+            Image itemframeImage = GameObject.Find("Player2_UI").transform.Find("Item").GetComponent<Image>();
+            itemframeImage.sprite = _InteractIcon;
+        }
+        else
+        {
+            Debug.Log("Unknown Playername: " + interacter.getName());
+        }
+        //-----------------------------------------
+
+
+        return true;
     }
 
 }

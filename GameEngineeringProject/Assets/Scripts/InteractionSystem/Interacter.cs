@@ -94,4 +94,9 @@ public class Interacter : MonoBehaviour
         }
     }
 
+    public String getName()
+    {
+        return gameObject.name;
+    }
+
     }

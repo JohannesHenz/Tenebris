@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractableConditioned : MonoBehaviour, IInteractable
 {
@@ -64,6 +65,28 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                     // this "consumes" player held item
                     // delete item from inventory
                     interacter.HeldItem = "";
+
+                    //----------- Delete Item in UI -------------
+                    Debug.Log("If Blank item is not  working look in Interactable_Conditioned");
+                    string path = "Prefabs/Icons/ItemBlank";
+
+                    if (interacter.getName() == "Player1")
+                    {
+                        Image itemframeImage = GameObject.Find("Player1_UI").transform.Find("Item").GetComponent<Image>();
+                        itemframeImage.sprite = Resources.Load<Sprite>(path);
+                    }
+                    else if (interacter.getName() == "Player2")
+                    {
+                        Image itemframeImage = GameObject.Find("Player2_UI").transform.Find("Item").GetComponent<Image>();
+                        itemframeImage.sprite = Resources.Load<Sprite>(path);
+                    }
+                    else
+                    {
+                        Debug.Log("Unknown Playername: " + interacter.getName());
+                    }
+                    //-----------------------------------------
+
+
                     // set itemcondition to noitem
                     if (ItemConditionNames.Count == 0)
                     {
