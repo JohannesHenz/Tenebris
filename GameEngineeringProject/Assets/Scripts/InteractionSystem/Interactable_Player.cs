@@ -13,7 +13,12 @@ public class Interactable_Player : MonoBehaviour, IInteractable
 
     public bool Interact(Interacter interacter)
     {
+        if (interacter.HeldItem == "Bandage")
+        {
         gameObject.transform.parent.gameObject.GetComponent<PlayerMovement>().Revive();
+        interacter.HeldItem = "";
+
+        }
         return false;
     }
 

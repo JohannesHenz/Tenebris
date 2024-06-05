@@ -166,17 +166,12 @@ public class PlayerMovement : MonoBehaviour
     // Method to revive the player
     public void Revive()
     {
-        if (reviveCount > 0)
-        {
-            reviveCount--;
-        }
-        else
-        {
+       
             gameObject.GetComponent<Interacter>().Deactivated = false;
             isDown = false;
             _re.material = normalMaterial;  // Revert the material to the normal state
             reviveCollider.SetActive(false);
-        }
+        
     }
 
     public bool getIsDown()
