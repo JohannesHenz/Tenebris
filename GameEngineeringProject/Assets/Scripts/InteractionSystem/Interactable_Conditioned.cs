@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class InteractableConditioned : MonoBehaviour, IInteractable
 {
     // item that the player has to hold in order to successfully interact with the interactable
     public List<GameObject> ItemConditions;
     public List<string> ItemConditionNames;
+
+    public bool RemoveCondition = true;
 
     private ICallAction action;
     
@@ -61,14 +64,30 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                 if (ItemConditionNames[i] == interacter.HeldItem)
                 {
                     Debug.Log("Successfully interacted with: " + gameObject.name + ", item used: " + interacter.HeldItem);
-                    ItemConditionNames.RemoveAt(i);
+                    if (RemoveCondition)
+                    {
+                        ItemConditionNames.RemoveAt(i);
+                    }
                     // this "consumes" player held item
+                    
+                    //Save oldItemName down
+                    string oldItemName = interacter.HeldItem;
+
+                    //construct path and load prefab from ressources
+                    string path = "Prefabs/Items/" + oldItemName;
+
+                    GameObject oldItem = Resources.Load<GameObject>(path);
+
+                    //Use transform form this pickup to instantiate old prefab
+                    GameObject instantiatedObject = Instantiate(oldItem, interacter.transform.position + Vector3.back, transform.rotation);
+                    instantiatedObject.name = oldItemName;
+
                     // delete item from inventory
                     interacter.HeldItem = "";
 
                     //----------- Delete Item in UI -------------
                     Debug.Log("If Blank item is not  working look in Interactable_Conditioned");
-                    string path = "Prefabs/Icons/ItemBlank";
+                    path = "Prefabs/Icons/ItemBlank";
 
                     if (interacter.getName() == "Player1")
                     {

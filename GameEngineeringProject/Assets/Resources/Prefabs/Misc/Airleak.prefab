@@ -530,10 +530,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemConditions:
-  - {fileID: 3493445346445012544, guid: 5bd0691c3cd19d442bbb2cb84091c7d3, type: 3}
+  - {fileID: 8435897516315024166, guid: 376a2173b25becc4da14e28941d3813d, type: 3}
   ItemConditionNames: []
+  RemoveCondition: 0
   _Prompt: 
-  _InteractIcon: {fileID: 21300000, guid: 9ae9353704b7a2a488ea306e118fa288, type: 3}
+  _InteractIcon: {fileID: 21300000, guid: 6a3fbb3230809d7498bc54d6bc14bfb0, type: 3}
 --- !u!114 &5302439943619290943
 MonoBehaviour:
   m_ObjectHideFlags: 0
