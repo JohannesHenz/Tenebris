@@ -41,7 +41,7 @@ public class Interactable_Dispenser : MonoBehaviour, IInteractable
                 oldItem = Resources.Load<GameObject>(path);
 
                 //Use transform form this pickup to instantiate old prefab
-                GameObject instantiatedObject = Instantiate(oldItem, transform.position, transform.rotation);
+                GameObject instantiatedObject = Instantiate(oldItem, interacter.transform.position + Vector3.back, transform.rotation);
                 instantiatedObject.name = oldItemName;
 
 
