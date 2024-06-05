@@ -13,6 +13,7 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     //Every Breakable could have an individual impact on the oxygen timer
     public float oxygenLeakWeight = 1;
     private Timer OxygenTimer;
+    public float breakingProbability = 0.5f;
 
     public bool isDestroyed = false;
 
@@ -28,7 +29,11 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     {
         if (!isDestroyed)
         {
-            BreakObject();
+            if (Random.Range(0f, 1f) < breakingProbability)
+            {
+                BreakObject();
+            }
+
         } else
         {
             RepairObject();
