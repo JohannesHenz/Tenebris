@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
     private Interacter interacter;
    
 
-    public event Action<PlayerMovement> OnPlayerDown;
 
     public GameObject playerPrefab; //Zum Spawnen
 

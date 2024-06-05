@@ -8,6 +8,7 @@ public class GlobalAudioSources : MonoBehaviour
     public AudioSource SoundAmbienteLooped;
     public AudioSource SoundAmbienteDetail;
     public AudioSource SoundAlarm;
+    public AudioSource SoundAirHissing;
 
     private void Awake()
     {

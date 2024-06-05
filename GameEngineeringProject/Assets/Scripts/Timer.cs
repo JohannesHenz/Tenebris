@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour
 {
@@ -68,6 +69,10 @@ public class Timer : MonoBehaviour
     {
         if (amount > 0)
         {
+            if (!GlobalAudioSources.Instance.SoundAirHissing.isPlaying)
+            {
+                GlobalAudioSources.Instance.SoundAirHissing.Play();
+            }
             timerSpeed += amount;
         }
     }
@@ -79,10 +84,23 @@ public class Timer : MonoBehaviour
         {
             timerSpeed -= amount;
 
-            if (timerSpeed < 1)
+            if (timerSpeed <= 1)
             {
                 timerSpeed = 1;
+                GlobalAudioSources.Instance.SoundAirHissing.Stop();
             }
+        }
+    }
+
+    public bool IsTimerRunOut()
+    {
+        if (timeLeft <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
