@@ -43,13 +43,13 @@ public class MonsterController : MonoBehaviour
         // The monster will checkout the source of the made noice
         if (currentState == State.Checkout && agent.remainingDistance <= GetComponent<WaypointMover>().distanceThreshold)
         {
-            Debug.Log("Monster is returning to pathway");
+            //Debug.Log("Monster is returning to pathway");
             ReturnRoaming();
         }
         // Monster is retreates to lates waypoint if player is to far away
         else if (currentState == State.Chasing && agent.remainingDistance > hearingCollider.radius)
         {
-            Debug.Log("Monster is bored");
+            //Debug.Log("Monster is bored");
             ReturnRoaming();
         }
         // If player is in hearing range - chase the player
@@ -64,7 +64,7 @@ public class MonsterController : MonoBehaviour
             }
             else
             {
-                Debug.Log("chase target");
+                //Debug.Log("chase target");
             }
   
         }
@@ -129,7 +129,7 @@ public class MonsterController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player dead");
+            //Debug.Log("Player dead");
             collision.gameObject.GetComponent<PlayerMovement>().GetDown();
             
             StartCoroutine("PostponeSetRoaming");

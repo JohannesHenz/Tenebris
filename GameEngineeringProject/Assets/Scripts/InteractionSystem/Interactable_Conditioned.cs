@@ -69,35 +69,24 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                         ItemConditionNames.RemoveAt(i);
                     }
                     // this "consumes" player held item
-                    
-                    //Save oldItemName down
-                    string oldItemName = interacter.HeldItem;
-
-                    //construct path and load prefab from ressources
-                    string path = "Prefabs/Items/" + oldItemName;
-
-                    GameObject oldItem = Resources.Load<GameObject>(path);
-
-                    //Use transform form this pickup to instantiate old prefab
-                    GameObject instantiatedObject = Instantiate(oldItem, interacter.transform.position + Vector3.back, transform.rotation);
-                    instantiatedObject.name = oldItemName;
 
                     // delete item from inventory
                     interacter.HeldItem = "";
+                    Image itemframeImage;
 
                     //----------- Delete Item in UI -------------
-                    Debug.Log("If Blank item is not  working look in Interactable_Conditioned");
-                    path = "Prefabs/Icons/ItemBlank";
-                    Debug.Log("It is: " + interacter.getName());
+                    string path = "Icons/ItemBlank";
 
                     if (interacter.getName() == "Player1")
                     {
-                        Image itemframeImage = GameObject.Find("Player1_UI").transform.Find("Item").GetComponent<Image>();
+                        itemframeImage = GameObject.Find("Player1_UI").transform.Find("Item").GetComponent<Image>();
+                        // Lade das Sprite aus den Ressourcen
+
                         itemframeImage.sprite = Resources.Load<Sprite>(path);
                     }
                     else if (interacter.getName() == "Player2")
                     {
-                        Image itemframeImage = GameObject.Find("Player2_UI").transform.Find("Item").GetComponent<Image>();
+                        itemframeImage = GameObject.Find("Player2_UI").transform.Find("Item").GetComponent<Image>();
                         itemframeImage.sprite = Resources.Load<Sprite>(path);
                     }
                     else
