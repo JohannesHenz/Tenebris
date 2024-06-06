@@ -2099,11 +2099,71 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 656418971989165795, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: SpriteInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 61cbdb55751e2ec4196c6a689f439c8f,
+        type: 3}
+    - target: {fileID: 913993711598073527, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: _InteractIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 5da3b5e64bba0394b87c032318eecf8a,
+        type: 3}
+    - target: {fileID: 2579779453894273082, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: _InteractIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 5da3b5e64bba0394b87c032318eecf8a,
+        type: 3}
+    - target: {fileID: 2773670214573463662, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: SpriteInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 61cbdb55751e2ec4196c6a689f439c8f,
+        type: 3}
+    - target: {fileID: 3599036592935839884, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: _InteractIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 5da3b5e64bba0394b87c032318eecf8a,
+        type: 3}
+    - target: {fileID: 3765397783776925912, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: SpriteInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 61cbdb55751e2ec4196c6a689f439c8f,
+        type: 3}
     - target: {fileID: 3825955535307727893, guid: 017c6796d1818194a801914768f59ccb,
         type: 3}
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 4162985931355572902, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: _InteractIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 5da3b5e64bba0394b87c032318eecf8a,
+        type: 3}
+    - target: {fileID: 4356911882748459762, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: SpriteInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 61cbdb55751e2ec4196c6a689f439c8f,
+        type: 3}
+    - target: {fileID: 6369660672773069048, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: SpriteInput
+      value: 
+      objectReference: {fileID: 21300000, guid: 5216e6c1e3929d04db1a56d07e814d64,
+        type: 3}
+    - target: {fileID: 6761782388044966060, guid: 017c6796d1818194a801914768f59ccb,
+        type: 3}
+      propertyPath: _InteractIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 7dbac3b70f89f28498ca385d4531e4fb,
+        type: 3}
     - target: {fileID: 7643853104140055958, guid: 017c6796d1818194a801914768f59ccb,
         type: 3}
       propertyPath: m_LocalPosition.x

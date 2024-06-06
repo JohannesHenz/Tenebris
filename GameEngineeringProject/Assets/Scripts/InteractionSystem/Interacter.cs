@@ -85,9 +85,12 @@ public class Interacter : MonoBehaviour
         {
             InteractSound.Play();
             InputBlocked = true;
-            _Interactable.Interact(this);
-            /// Added by Johannes for the TaskSound
-            soundManager.EmitSound(SoundType.Task);
+            if (_Interactable.Interact(this))
+            {
+                /// Added by Johannes for the TaskSound
+                soundManager.EmitSound(SoundType.Task);
+            }
+            
             /// 
             // start cooldown coroutine
             Invoke("UnblockInput", InputDelay);

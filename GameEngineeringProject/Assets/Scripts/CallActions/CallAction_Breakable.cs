@@ -29,7 +29,8 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
     {
         if (!isDestroyed)
         {
-            if (Random.Range(0f, 1f) < breakingProbability)
+            float randomNumber = Random.Range(0f, 1f);
+            if (randomNumber < breakingProbability)
             {
                 BreakObject();
             }
