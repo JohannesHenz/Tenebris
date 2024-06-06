@@ -130,7 +130,11 @@ public class MonsterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Player dead");
-            collision.gameObject.GetComponent<PlayerMovement>().GetDown();
+            if (!collision.gameObject.GetComponent<PlayerMovement>().isDown)
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().GetDown();
+            }
+            
             
             StartCoroutine("PostponeSetRoaming");
 
