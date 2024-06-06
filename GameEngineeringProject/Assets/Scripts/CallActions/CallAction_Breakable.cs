@@ -34,13 +34,15 @@ public class CallAction_Breakable : MonoBehaviour, ICallAction
             if (randomNumber < breakingProbability)
             {
                 BreakObject();
+                EffectsObject.GetComponent<ICallAction>().CallAction(gameObject);
             }
 
         } else
         {
             RepairObject();
+            EffectsObject.GetComponent<ICallAction>().CallAction(gameObject);
         }
-        EffectsObject.GetComponent<ICallAction>().CallAction(gameObject);
+        
         return true;
     }
 
