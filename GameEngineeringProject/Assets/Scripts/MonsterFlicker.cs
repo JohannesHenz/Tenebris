@@ -99,5 +99,7 @@ public class MonsterFlicker : MonoBehaviour
         {
             flashlight.intensity = defaultIntensity; // Ensure the light returns to its default state
         }
+        flashlight = null; // Reset flashlight reference
+
     }
 }
