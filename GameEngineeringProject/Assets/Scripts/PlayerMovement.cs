@@ -39,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource StepSound;
     private Interacter interacter;
     public AudioSource DeathSound;
-    public AudioSource HeavyBreathing;
+
+    public AudioSource NoiceMaker; 
    
 
 
@@ -117,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed)
         {
 
-
+            NoiceMaker.Play();
             soundManager.EmitSound(SoundType.NoiseMaker);
         }
 
