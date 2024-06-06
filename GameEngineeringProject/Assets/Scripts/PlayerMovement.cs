@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private AudioSource StepSound;
     private Interacter interacter;
+    public AudioSource DeathSound;
    
 
 
@@ -160,18 +161,19 @@ public class PlayerMovement : MonoBehaviour
         reviveCollider.SetActive(true);
         isDown = true;
         _re.material = downedMaterial;  // Change the material to the downed state
+        DeathSound.Play();
         NotifyDeathChecker(); //Checkt ob Bedingungen erfüllt sind um den Death Screen zu laden
     }
 
     // Method to revive the player
     public void Revive()
     {
-       
-            gameObject.GetComponent<Interacter>().Deactivated = false;
-            isDown = false;
-            _re.material = normalMaterial;  // Revert the material to the normal state
-            reviveCollider.SetActive(false);
-        
+
+        gameObject.GetComponent<Interacter>().Deactivated = false;
+        isDown = false;
+        _re.material = normalMaterial;  // Revert the material to the normal state
+        reviveCollider.SetActive(false);
+
     }
 
     public bool getIsDown()
@@ -183,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
     {
         DeathChecker deathChecker = FindObjectOfType<DeathChecker>();
         
-            deathChecker.CheckPlayersStatus();
+        deathChecker.CheckPlayersStatus();
         
     }
 
