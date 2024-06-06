@@ -11,7 +11,7 @@ public class NavMeshAgentIdleTime : MonoBehaviour
     private float incrementInterval = 1.0f;
     private float maxIdleTime = 5.0f;
     private WaypointMover wayPointMover;
-    private bool ableToTeleport = true;
+    public bool ableToTeleport = true;
 
 
 
@@ -53,14 +53,7 @@ public class NavMeshAgentIdleTime : MonoBehaviour
 
     public void toggleTeleport()
     {
-        if (ableToTeleport == true)
-        {
-            ableToTeleport = false;
-        }
-        else
-        {
-            ableToTeleport = true;
-        }
+        ableToTeleport = !ableToTeleport;
     }
 }
 
