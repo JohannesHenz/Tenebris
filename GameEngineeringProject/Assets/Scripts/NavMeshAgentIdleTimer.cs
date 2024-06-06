@@ -13,6 +13,8 @@ public class NavMeshAgentIdleTime : MonoBehaviour
     private WaypointMover wayPointMover;
     public bool ableToTeleport = true;
 
+    public AudioSource monsterScream;
+
 
 
     private void Start()
@@ -48,6 +50,7 @@ public class NavMeshAgentIdleTime : MonoBehaviour
         if (ableToTeleport && idleTime >= maxIdleTime)
         {
             wayPointMover.StartRoaming();
+            monsterScream.Play();
         }
     }
 
