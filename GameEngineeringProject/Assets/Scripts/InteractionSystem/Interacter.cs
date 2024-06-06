@@ -29,6 +29,7 @@ public class Interacter : MonoBehaviour
     private float InputDelay = 1.0f;
 
     public AudioSource InteractSound = null;
+    public AudioSource FailedInteractSound = null;
 
     /// Added by Johannes for the TaskSound
     private SoundManager soundManager;  // Reference to the SoundManager
@@ -94,6 +95,9 @@ public class Interacter : MonoBehaviour
             /// 
             // start cooldown coroutine
             Invoke("UnblockInput", InputDelay);
+        } else
+        {
+            FailedInteractSound.Play();
         }
     }
 

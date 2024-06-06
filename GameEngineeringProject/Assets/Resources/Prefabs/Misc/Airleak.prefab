@@ -341,6 +341,7 @@ MonoBehaviour:
   _uiInteractable: {fileID: 6291702561871982559}
   SpriteInput: {fileID: 21300000, guid: b5612abce1006e749a12e5b378df203a, type: 3}
   oxygenLeakWeight: 0.5
+  breakingProbability: 0.5
   isDestroyed: 0
 --- !u!1 &3343390697729912105
 GameObject:
@@ -533,6 +534,8 @@ MonoBehaviour:
   - {fileID: 8435897516315024166, guid: 376a2173b25becc4da14e28941d3813d, type: 3}
   ItemConditionNames: []
   RemoveCondition: 0
+  DestroyItemOnUse: 0
+  InteractOnce: 0
   _Prompt: 
   _InteractIcon: {fileID: 21300000, guid: 6a3fbb3230809d7498bc54d6bc14bfb0, type: 3}
 --- !u!114 &5302439943619290943

@@ -67,10 +67,7 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                 if (ItemConditionNames[i] == interacter.HeldItem)
                 {
                     Debug.Log("Successfully interacted with: " + gameObject.name + ", item used: " + interacter.HeldItem);
-                    if (RemoveCondition)
-                    {
-                        ItemConditionNames.RemoveAt(i);
-                    }
+                    ItemConditionNames.RemoveAt(i);
                     
 
                     // delete item from inventory
