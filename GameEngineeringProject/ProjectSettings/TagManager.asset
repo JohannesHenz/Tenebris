@@ -11,6 +11,7 @@ TagManager:
   - FlickerLight
   - Flashlight
   - Breakable
+  - DummyMonster
   layers:
   - Default
   - TransparentFX
