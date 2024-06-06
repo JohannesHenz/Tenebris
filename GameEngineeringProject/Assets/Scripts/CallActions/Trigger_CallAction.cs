@@ -13,7 +13,7 @@ public class Trigger_CallAction : MonoBehaviour
         Gizmos.DrawLine(transform.position, Target.transform.position);
     }
 
-    public void OnTriggerStay(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Monster"))
         {

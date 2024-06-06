@@ -1664,7 +1664,7 @@ PrefabInstance:
     - target: {fileID: 2355791827408105399, guid: f5a46451024c37f4c8b7b7cbfc55c448,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: -1.76
       objectReference: {fileID: 0}
     - target: {fileID: 2355791827408105399, guid: f5a46451024c37f4c8b7b7cbfc55c448,
         type: 3}
@@ -1674,7 +1674,7 @@ PrefabInstance:
     - target: {fileID: 2355791827408105399, guid: f5a46451024c37f4c8b7b7cbfc55c448,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.75
+      value: 12.49
       objectReference: {fileID: 0}
     - target: {fileID: 2355791827408105399, guid: f5a46451024c37f4c8b7b7cbfc55c448,
         type: 3}
@@ -2215,7 +2215,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8662264399576973752, guid: 017c6796d1818194a801914768f59ccb, type: 3}
+    - {fileID: 7033662781938693301, guid: 017c6796d1818194a801914768f59ccb, type: 3}
+    - {fileID: 3784014961031307848, guid: 017c6796d1818194a801914768f59ccb, type: 3}
+    - {fileID: 3952017831489663255, guid: 017c6796d1818194a801914768f59ccb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 017c6796d1818194a801914768f59ccb, type: 3}
@@ -3253,7 +3257,7 @@ PrefabInstance:
     - target: {fileID: 4053154552956004720, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.75
+      value: -1.58
       objectReference: {fileID: 0}
     - target: {fileID: 4053154552956004720, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}
@@ -3263,7 +3267,7 @@ PrefabInstance:
     - target: {fileID: 4053154552956004720, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.75
+      value: 13.34
       objectReference: {fileID: 0}
     - target: {fileID: 4053154552956004720, guid: a73c887916b49f5488f57dbe1145e712,
         type: 3}

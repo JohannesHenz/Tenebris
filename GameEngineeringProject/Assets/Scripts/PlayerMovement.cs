@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource StepSound;
     private Interacter interacter;
     public AudioSource DeathSound;
+    public AudioSource HeavyBreathing;
    
 
 
@@ -231,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Test: " + collision.gameObject);
+        Debug.Log("Test: " + collision.gameObject);
     }
 
 }
