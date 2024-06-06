@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(CharacterController))]
@@ -163,6 +164,8 @@ public class PlayerMovement : MonoBehaviour
         _re.material = downedMaterial;  // Change the material to the downed state
         DeathSound.Play();
         NotifyDeathChecker(); //Checkt ob Bedingungen erfüllt sind um den Death Screen zu laden
+
+        ChangeUI(); // Change Charactersheet to Dead Charactersheet if isDown = true
     }
 
     // Method to revive the player
@@ -173,6 +176,8 @@ public class PlayerMovement : MonoBehaviour
         isDown = false;
         _re.material = normalMaterial;  // Revert the material to the normal state
         reviveCollider.SetActive(false);
+
+        ChangeUI(); // Change Charactersheet to Alive Charactersheet if isDown = false
 
     }
 
@@ -187,6 +192,41 @@ public class PlayerMovement : MonoBehaviour
         
         deathChecker.CheckPlayersStatus();
         
+    }
+
+    private void ChangeUI()
+    {
+        string path = "Icons/";
+        Image characterSheet = null;
+
+        //---- Declaring which Player is changing UI ----
+        if (gameObject.name == "Player1")
+        {
+            characterSheet = GameObject.Find("Player1_UI").transform.Find("CharacterSheet").GetComponent<Image>();
+        }
+        else if (gameObject.name == "Player2")
+        {
+            characterSheet = GameObject.Find("Player2_UI").transform.Find("CharacterSheet").GetComponent<Image>();
+        }
+        else
+        {
+            Debug.Log("Unknown Playername: " + gameObject.name);
+        }
+        //------------------------------------------------
+
+        //Checking if Player is Dead or Alive
+        if (isDown == true)
+        {
+            path = path += gameObject.name + "CharacterSheetDead";
+        }
+        else
+        {
+            path = path + gameObject.name + "CharacterSheet";
+        }
+
+        //Load Correct CharacterSheet
+        characterSheet.sprite = Resources.Load<Sprite>(path);
+
     }
 
 }

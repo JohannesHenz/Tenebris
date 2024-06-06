@@ -72,16 +72,15 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
 
                     // delete item from inventory
                     interacter.HeldItem = "";
-                    Image itemframeImage;
 
                     //----------- Delete Item in UI -------------
                     string path = "Icons/ItemBlank";
+                    Image itemframeImage;
 
                     if (interacter.getName() == "Player1")
                     {
                         itemframeImage = GameObject.Find("Player1_UI").transform.Find("Item").GetComponent<Image>();
-                        // Lade das Sprite aus den Ressourcen
-
+                        // Load the Sprite from the Resources
                         itemframeImage.sprite = Resources.Load<Sprite>(path);
                     }
                     else if (interacter.getName() == "Player2")
