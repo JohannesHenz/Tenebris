@@ -17,6 +17,8 @@ public class MonsterFlicker : MonoBehaviour
     private float timer = 0f;
     private bool isOn = true;
 
+    public AudioSource HeavyBreathing;
+
     private void Start()
     {
         sphereCollider = GetComponent<SphereCollider>();
@@ -57,6 +59,7 @@ public class MonsterFlicker : MonoBehaviour
                 {
                     Debug.Log("Flashlight detected in range.");
                     shouldFlicker = true;
+                    HeavyBreathing.Play();
                     defaultIntensity = flashlight.intensity;
                     flickerInterval = Random.Range(minFlickerInterval, maxFlickerInterval); // Initialize with random interval
                 }
