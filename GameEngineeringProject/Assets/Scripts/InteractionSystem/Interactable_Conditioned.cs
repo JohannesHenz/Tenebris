@@ -71,11 +71,12 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                     {
                         ItemConditionNames.RemoveAt(i);
                     }
-                    // this "consumes" player held item
+                    
 
                     // delete item from inventory
                     if (DestroyItemOnUse)
                     {
+                        // this "consumes" player held item
                         interacter.HeldItem = "";
                         string path = "Icons/ItemBlank";
 
