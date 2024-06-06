@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         InvokeRepeating("HandleStepSound", 0f, stepSoundInterval);
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (!isDown) //Don't Move or Make StepSound if player is down
         {
