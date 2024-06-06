@@ -235,7 +235,7 @@ MonoBehaviour:
   maxFlickerInterval: 0.4
   flickerDuration: 0.02
   radius: 10
-  HeavyBreathing: {fileID: 0}
+  HeavyBreathing: {fileID: -2159271347624897784}
 --- !u!114 &6634543669577512788
 MonoBehaviour:
   m_ObjectHideFlags: 0
