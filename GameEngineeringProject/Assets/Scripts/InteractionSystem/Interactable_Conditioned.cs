@@ -14,6 +14,9 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
 
     public bool RemoveCondition = true;
 
+    public bool DestroyItemOnUse = true;
+    public bool InteractOnce = false;
+
     private ICallAction action;
     
     [SerializeField] private string _Prompt;
@@ -68,32 +71,37 @@ public class InteractableConditioned : MonoBehaviour, IInteractable
                     {
                         ItemConditionNames.RemoveAt(i);
                     }
-                    // this "consumes" player held item
+                    
 
                     // delete item from inventory
-                    interacter.HeldItem = "";
-
-                    //----------- Delete Item in UI -------------
-                    string path = "Icons/ItemBlank";
-                    Image itemframeImage;
-
-                    if (interacter.getName() == "Player1")
+                    if (DestroyItemOnUse)
                     {
-                        itemframeImage = GameObject.Find("Player1_UI").transform.Find("Item").GetComponent<Image>();
-                        // Load the Sprite from the Resources
-                        itemframeImage.sprite = Resources.Load<Sprite>(path);
-                    }
-                    else if (interacter.getName() == "Player2")
-                    {
-                        itemframeImage = GameObject.Find("Player2_UI").transform.Find("Item").GetComponent<Image>();
-                        itemframeImage.sprite = Resources.Load<Sprite>(path);
-                    }
-                    else
-                    {
-                        Debug.Log("Unknown Playername: " + interacter.getName());
-                    }
-                    //-----------------------------------------
+                        // this "consumes" player held item
+                        interacter.HeldItem = "";
+                        string path = "Icons/ItemBlank";
 
+
+
+                        //----------- Delete Item in UI -------------
+                        Image itemframeImage;
+
+                        if (interacter.getName() == "Player1")
+                        {
+                            itemframeImage = GameObject.Find("Player1_UI").transform.Find("Item").GetComponent<Image>();
+                            // Load the Sprite from the Resources
+                            itemframeImage.sprite = Resources.Load<Sprite>(path);
+                        }
+                        else if (interacter.getName() == "Player2")
+                        {
+                            itemframeImage = GameObject.Find("Player2_UI").transform.Find("Item").GetComponent<Image>();
+                            itemframeImage.sprite = Resources.Load<Sprite>(path);
+                        }
+                        else
+                        {
+                            Debug.Log("Unknown Playername: " + interacter.getName());
+                        }
+                        //-----------------------------------------
+                    }
 
                     // set itemcondition to noitem
                     if (ItemConditionNames.Count == 0)
